@@ -1,9 +1,10 @@
 //Import
 const express = require('express')
 const app = express()
-const PORT = process.env.PORT || '8080' 
-
-app.set("port",PORT);
+let port = process.env.PORT ;
+if (port == null || port == "") {
+    port = 3000;
+}
 
 //Files
 app.use(express.static('public'));
@@ -17,8 +18,4 @@ app.get("/", function (req, res) {
     res.render("index");
 });
 
-app.get("*", function (req, res) {
-    res.render("index");
-});
-
-//app.listen(port, () => console.info(`Ok -> Port: ${port}`))
+app.listen(port, () => console.info(`Ok -> Port: ${port}`))
