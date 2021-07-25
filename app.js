@@ -1,7 +1,7 @@
 //Import
 const express = require('express')
 const app = express()
-let port = process.env.PORT;
+let port = process.env.PORT ;
 if (port == null || port == "") {
     port = 3000;
 }
@@ -14,8 +14,12 @@ app.set('views', './views');
 app.set('view engine', 'ejs');
 
 //Default
-app.get('', (req, res) => {
-    res.render('index', { text: 'Hey' })
-})
+app.get("/", function (req, res) {
+    res.render("index");
+});
+
+app.get(" ", function (req, res) {
+    res.render("index");
+});
 
 app.listen(port, () => console.info(`Ok -> Port: ${port}`))
