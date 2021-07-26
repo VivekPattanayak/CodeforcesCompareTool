@@ -24,8 +24,8 @@ async function comparefunction(){
             document.getElementById("handle1").innerHTML = str;
         } 
         document.getElementById('name1').innerHTML='Name: '+user1.firstName+' '+user1.lastName;
-        document.getElementById('rating1').innerHTML='Rating: '+user1.rating + '  (' + user1.rank + ')' ;
-        document.getElementById('maxrating1').innerHTML='Max Rating: '+user1.maxRating + '  (' + user1.maxRank + ')';
+        document.getElementById('rating1').innerHTML='<span>Rating: '+'</span> <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user1.rank)+';">' + user1.rating + '</span>' + '  ( </span> <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user1.rank)+';">' + user1.rank + '</span>)' ;
+        document.getElementById('maxrating1').innerHTML='<span>Max Rating: '+'</span> <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user1.maxRank)+';">' + user1.maxRating + '</span>' + '  ( </span> <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user1.maxRank)+';">' + user1.maxRank + '</span>)' ;
         //assume ok because he has an entity already existing
 
         //start of rating graph 
@@ -111,15 +111,27 @@ async function comparefunction(){
                 fill: false,
                 tension: 0.2,
                 borderWidth: 2,
+                pointRadius: 2,
+                pointBackgroundColor: '#6daffe',
+                pointBorderColor: '#6daffe',
                 backgroundColor: "rgba(0,0,255,1.0)",
-                borderColor: "rgba(65, 80, 104, 0.58)",
+                borderColor: "#6daffe",
                 data: Yval
                 }]
             },
             options: {
                 legend: {display: false},
-                scales: {
-                yAxes: [{ticks: {min:`+minrate+', max:'+maxrate+'}}],'
+                scales: { 
+                xAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Round No'
+                    }
+                }],
+                yAxes: [{scaleLabel: {
+                    display: true,
+                    labelString: 'Rating'
+                  } , ticks: {min:`+minrate+', max:'+maxrate+'}}],'
                 +'}'
             +'}'
             +'});;';
@@ -163,8 +175,8 @@ async function comparefunction(){
             document.getElementById("handle2").innerHTML = str;
         } 
         document.getElementById('name2').innerHTML='Name: '+user2.firstName+' '+user2.lastName;
-        document.getElementById('rating2').innerHTML='Rating: '+user2.rating + '  (' + user2.rank + ')' ;
-        document.getElementById('maxrating2').innerHTML='Max Rating: '+user2.maxRating + '  (' + user2.maxRank + ')';
+        document.getElementById('rating2').innerHTML='<span>Rating: '+'</span> <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user2.rank)+';">' + user2.rating + '</span>' + '  ( </span> <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user2.rank)+';">' + user2.rank + '</span>)' ;
+        document.getElementById('maxrating2').innerHTML='<span>Max Rating: '+'</span> <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user2.maxRank)+';">' + user2.maxRating + '</span>' + '  ( </span> <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user2.maxRank)+';">' + user2.maxRank + '</span>)' ;
         //assume ok because he has an entity already existing
         let ratingurl="https://codeforces.com/api/user.rating?handle="+user2.handle;
 
@@ -250,15 +262,27 @@ async function comparefunction(){
                 fill: false,
                 tension: 0.2,
                 borderWidth: 2,
+                pointRadius: 2,
+                pointBackgroundColor: '#6daffe',
+                pointBorderColor: '#6daffe',
                 backgroundColor: "rgba(0,0,255,1.0)",
-                borderColor: "rgba(65, 80, 104, 0.58)",
+                borderColor: "#6daffe",
                 data: Yval
                 }]
             },
             options: {
                 legend: {display: false},
-                scales: {
-                yAxes: [{ticks: {min:`+minrate+', max:'+maxrate+'}}],'
+                scales: { 
+                xAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Round No'
+                    }
+                }],
+                yAxes: [{scaleLabel: {
+                    display: true,
+                    labelString: 'Rating'
+                  } , ticks: {min:`+minrate+', max:'+maxrate+'}}],'
                 +'}'
             +'}'
             +'});;';
