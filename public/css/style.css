@@ -1,0 +1,19 @@
+#tab_1{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#tab_1 td, #tab_1 th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#tab_2{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#tab_2 td, #tab_2 th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}

@@ -6,6 +6,7 @@ async function comparefunction(){
     {
         const a1= await res1.json();
         const user1 = a1.result[0];
+        document.getElementById('tab_1').style.display='block';
         document.getElementById('user1dp').src=user1.titlePhoto;
         document.getElementById('user1dp').style.height='200px';
         document.getElementById('user1dp').style.width='200px';
@@ -23,9 +24,9 @@ async function comparefunction(){
             str=str+"</span>";
             document.getElementById("handle1").innerHTML = str;
         } 
-        document.getElementById('name1').innerHTML='Name: '+user1.firstName+' '+user1.lastName;
-        document.getElementById('rating1').innerHTML='<span>Rating: '+'</span> <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user1.rank)+';">' + user1.rating + '</span>' + '  ( </span> <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user1.rank)+';">' + user1.rank + '</span>)' ;
-        document.getElementById('maxrating1').innerHTML='<span>Max Rating: '+'</span> <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user1.maxRank)+';">' + user1.maxRating + '</span>' + '  ( </span> <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user1.maxRank)+';">' + user1.maxRank + '</span>)' ;
+        document.getElementById('name1').innerHTML=user1.firstName+' '+user1.lastName;
+        document.getElementById('rating1').innerHTML=' <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user1.rank)+';">' + user1.rating + '</span>' + '  ( </span> <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user1.rank)+';">' + user1.rank + '</span>)' ;
+        document.getElementById('maxrating1').innerHTML=' <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user1.maxRank)+';">' + user1.maxRating + '</span>' + '  ( </span> <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user1.maxRank)+';">' + user1.maxRank + '</span>)' ;
         //assume ok because he has an entity already existing
 
         //start of rating graph 
@@ -36,7 +37,7 @@ async function comparefunction(){
             const obj1= await rating_exists.json();
             var Xval=[];
             var Yval=[];
-            document.getElementById("contests_appeared1").innerHTML='Contests appeared: '+obj1.result.length;
+            document.getElementById("contests_appeared1").innerHTML=obj1.result.length;
             let bestrank='1000000',worstrank=0,bestrankroundname=' NA ',worstrankroundname=' NA ',maxdplus=0,maxdminus=0,bestroundname=' NA ',worstroundname=' NA ';
             for(var i = 0; i < obj1.result.length; i++) {
                 let t_obj=obj1.result[i];
@@ -66,10 +67,10 @@ async function comparefunction(){
             if(bestrank==='1000000'){
                 bestrank='0';
             }
-            document.getElementById("bestrank1").innerHTML='Best rank : '+bestrank+' ( '+bestrankroundname+' ) ';
-            document.getElementById("worstrank1").innerHTML='Worst rank : '+worstrank+' ( '+worstrankroundname+' ) ';
-            document.getElementById("maxdplus1").innerHTML='Maximum rating increase : '+maxdplus+ ' ( '+bestroundname+' )';
-            document.getElementById("maxdminus1").innerHTML='Maximum rating decrease : '+maxdminus+ ' ( '+worstroundname+' ) ';
+            document.getElementById("bestrank1").innerHTML=bestrank+' ( '+bestrankroundname+' ) ';
+            document.getElementById("worstrank1").innerHTML=worstrank+' ( '+worstrankroundname+' ) ';
+            document.getElementById("maxdplus1").innerHTML=maxdplus+ ' ( '+bestroundname+' )';
+            document.getElementById("maxdminus1").innerHTML=maxdminus+ ' ( '+worstroundname+' ) ';
             //console.log(Xval);
             //console.log(Yval);
             let str ='var Xval=[',maxrate=100,minrate=800;
@@ -157,6 +158,7 @@ async function comparefunction(){
     {
         const a2= await res2.json();
         const user2 = a2.result[0];
+        document.getElementById('tab_2').style.display='block';
         document.getElementById('user2dp').src=user2.titlePhoto;
         document.getElementById('user2dp').style.height='200px';
         document.getElementById('user2dp').style.width='200px';
@@ -174,9 +176,9 @@ async function comparefunction(){
             str=str+"</span>";
             document.getElementById("handle2").innerHTML = str;
         } 
-        document.getElementById('name2').innerHTML='Name: '+user2.firstName+' '+user2.lastName;
-        document.getElementById('rating2').innerHTML='<span>Rating: '+'</span> <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user2.rank)+';">' + user2.rating + '</span>' + '  ( </span> <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user2.rank)+';">' + user2.rank + '</span>)' ;
-        document.getElementById('maxrating2').innerHTML='<span>Max Rating: '+'</span> <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user2.maxRank)+';">' + user2.maxRating + '</span>' + '  ( </span> <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user2.maxRank)+';">' + user2.maxRank + '</span>)' ;
+        document.getElementById('name2').innerHTML=user2.firstName+' '+user2.lastName;
+        document.getElementById('rating2').innerHTML='<span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user2.rank)+';">' + user2.rating + '</span>' + '  ( </span> <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user2.rank)+';">' + user2.rank + '</span>)' ;
+        document.getElementById('maxrating2').innerHTML='<span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user2.maxRank)+';">' + user2.maxRating + '</span>' + '  ( </span> <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user2.maxRank)+';">' + user2.maxRank + '</span>)' ;
         //assume ok because he has an entity already existing
         let ratingurl="https://codeforces.com/api/user.rating?handle="+user2.handle;
 
@@ -185,7 +187,7 @@ async function comparefunction(){
         const rating_exists= await fetch(ratingurl);
         if(rating_exists.ok){
             const obj1= await rating_exists.json();
-            document.getElementById("contests_appeared2").innerHTML='Contests appeared: '+obj1.result.length;
+            document.getElementById("contests_appeared2").innerHTML=obj1.result.length;
             var Xval=[];
             var Yval=[];
             let bestrank='1000000',worstrank=0,bestrankroundname=' NA ',worstrankroundname=' NA ',maxdplus=0,maxdminus=0,bestroundname=' NA ',worstroundname=' NA ';
@@ -217,10 +219,10 @@ async function comparefunction(){
             if(bestrank==='1000000'){
                 bestrank='0';
             }
-            document.getElementById("bestrank2").innerHTML='Best rank : '+bestrank+' ( '+bestrankroundname+' ) ';
-            document.getElementById("worstrank2").innerHTML='Worst rank : '+worstrank+' ( '+worstrankroundname+' ) ';
-            document.getElementById("maxdplus2").innerHTML='Maximum rating increase : '+maxdplus+ ' ( '+bestroundname+' )';
-            document.getElementById("maxdminus2").innerHTML='Maximum rating decrease : '+maxdminus+ ' ( '+worstroundname+' ) ';
+            document.getElementById("bestrank2").innerHTML=bestrank+' ( '+bestrankroundname+' ) ';
+            document.getElementById("worstrank2").innerHTML=worstrank+' ( '+worstrankroundname+' ) ';
+            document.getElementById("maxdplus2").innerHTML=maxdplus+ ' ( '+bestroundname+' )';
+            document.getElementById("maxdminus2").innerHTML=maxdminus+ ' ( '+worstroundname+' ) ';
             //console.log(Xval);
             //console.log(Yval);
             let str ='var Xval=[',maxrate=100,minrate=800;
@@ -250,7 +252,7 @@ async function comparefunction(){
                 }
             }
             str=str+'];';
-            document.getElementById("g2holder").innerHTML=` <canvas id="graph2" style="width:100%;max-width:800px"></canvas> `;
+            document.getElementById("g2holder").innerHTML=` <canvas id="graph2" style="width:100%;max-width:800px;display:block;margin:auto;"></canvas> `;
             console.log(str);
             var script = document.createElement("script");
             script.innerHTML =  str+ `
