@@ -309,13 +309,13 @@ function toggleuser2(){
     if(checker.style.display==='block'){
         checker.style.display='none';
         document.getElementById("Enteruser2").style.display='none';
-        document.getElementById("single_multi_icon").innerHTML=`<i class="fa fa-user-circle" style="font-size:30px;color:#437fc7"></i>`;
+        document.getElementById("single_multi_icon").innerHTML=`<i class="fa fa-user" style="font-size:30px;color:#6daffe"></i>`;
         document.getElementById("clickbox").innerHTML="See Stats";
     }
     else if(checker.style.display==='none'){
         checker.style.display='block';
         document.getElementById("Enteruser2").style.display='block';
-        document.getElementById("single_multi_icon").innerHTML=`<i class="fa fa-users" style="font-size:30px;color:#437fc7"></i>`;
+        document.getElementById("single_multi_icon").innerHTML=`<i class="fa fa-users" style="font-size:30px;color:#6daffe"></i>`;
         document.getElementById("clickbox").innerHTML="Compare";
     }
 }

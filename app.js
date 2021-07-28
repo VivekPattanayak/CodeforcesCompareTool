@@ -9,6 +9,10 @@ if (port == null || port == "") {
 //Files
 app.use(express.static('public'));
 
+var favicon = require('serve-favicon');
+
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
+
 //Views
 app.set('views', './views');
 app.set('view engine', 'ejs');
