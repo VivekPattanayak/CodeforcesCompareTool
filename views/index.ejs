@@ -23,6 +23,7 @@
   </head>
     <body>
       
+
       <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark" >
         <div class="container-fluid text-center">
           <a class="animate__animated animate__fadeInDown navbar-brand" href="#">
@@ -36,7 +37,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent" style="justify-content: center;">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <a onclick="toggleuser2()" class="nav-link active" aria-current="page" href="#">  <span> Toggle  <span>  <span id="single_multi_icon"> <i class="fa fa-toggle-off" style="font-size:30px;color:#6daffe"></i></span></a>
+                  <a onclick="toggleuser2()" class="nav-link active" aria-current="page" href="#">  <span style="text-align: center;">Toggle</span>   <span id="single_multi_icon"> <i class="fa fa-toggle-off" style="font-size:30px;color:#6daffe"></i></span></a>
                 </li>
               </ul>
             </div>
@@ -46,22 +47,22 @@
 
 
         <div class=".container-fluid " style=" text-align: center;">
-            <div class="row" >
-              <div class="col-sm" style="background-color:#6daffe;height:auto;">
+            <div class="row " style="margin:0" >
+              <div class="col-sm " style="background-color:#6daffe;">
                 <div  style="margin-top:10px">
                     Enter user 1:
                 </div>
                 <input id="info1" placeholder="Enter Handle" style="margin-top:5px;margin-bottom: 15px;">
               </div>
-              <div class="col-sm" id="Enteruser2" style="color:white;background-color:#437fc7;height:auto;">
+              <div class="col-sm" id="Enteruser2" style="color:white;background-color:#437fc7;padding-bottom: 15px;">
                 <div style="margin-top:10px">
                     Enter user 2:
                 </div>
                 <input id="info2" placeholder="Enter Handle" style="margin-top:5px;">
               </div>
             </div>
-            <div class="row">
-
+            <div class="row " style="margin:0">
+                <div></div>
                 <!--User 1-->
                 <div id="user_1" class="col-sm" style="background-color:#ffffff;">
                   <img id="user1dp" style="border-radius: 50%;margin-top:10px">
@@ -146,7 +147,7 @@
                 
 
               </div>
-            <div class="row " >
+            <div class="row " style="margin:0" >
                     <div >
                         <button class="animate__animated animate__fadeIn animate__delay-1s" id="clickbox" type="button" onclick=comparefunction() style="padding-top:5px;padding-bottom:5px;padding-left:10px;padding-right:10px;margin-top:30px;margin-bottom:30px;background-color: #437fc7;color:white;font-size:16px;border-radius: 11px;border: 0px solid #000000;" >
                             Compare
@@ -155,24 +156,29 @@
             </div>
           </div>
           
-          <hr width='100%'> </hr>
+          </div>
 
-          <div id="footer" style="text-align: center;">
-            <div style="color: lightslategray">
+          <footer>
+          <hr width='100%'> </hr>
+          <div style="text-align: center;">
+            <div style="color: lightslategray;font-size: 14px;">
               About
             </div>
-            <div style="color: darkgray">
+            <div style="color: darkgray;font-size: 13px;">
               This is an online application to check your codeforces stats and compare them with other users!
             </div>
-            <div >
-              <div >
-                <a  href="https://www.linkedin.com/in/vivek-pattanayak-8225021a0/" target="_blank" ><i class="fa fa-linkedin" style="font-size:35px;color:#849194;"></i></a>
+            <div class="container" style="width:150px;">
+              <div class="row" style="margin:0">
+              <div class="col-sm" >
+                <a  href="https://www.linkedin.com/in/vivek-pattanayak-8225021a0/" target="_blank" ><i class="fa fa-linkedin" style="font-size:30px;color:#849194;padding-top:15px;padding-bottom: 15px;"></i></a>
               </div>  
-              <div >
-                <a href="https://github.com/VivekPattanayak" target="_blank"><i class="fa fa-github" style="font-size:35px;color:#849194;"></i></a>
+              <div class="col-sm" >
+                <a href="https://github.com/VivekPattanayak" target="_blank"><i class="fa fa-github" style="font-size:30px;color:#849194;padding-top:15px;padding-bottom: 15px;"></i></a>
+              </div>
               </div> 
             </div>
           </div>
+          </footer>
           
     </body>
 </html>

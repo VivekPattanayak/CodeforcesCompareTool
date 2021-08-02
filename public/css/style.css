@@ -1,3 +1,7 @@
+*{
+    max-width:100%;
+}
+
 #tab_1{
     margin-top: 20px;
     margin-bottom: 20px;
@@ -16,4 +20,18 @@
 #tab_2 td, #tab_2 th {
     border: 1px solid #ddd;
     padding: 8px;
+}
+
+body{ height:100vh; margin:0; }
+
+footer{ min-height:50px;  }
+
+body{ 
+  display:flex; 
+  flex-direction:column; 
+  width: 100vw;
+}
+
+footer{
+  margin-top:auto; 
 }
