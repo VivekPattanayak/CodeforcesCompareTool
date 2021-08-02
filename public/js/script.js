@@ -4,6 +4,7 @@ async function comparefunction(){
     let url2="https://codeforces.com/api/user.info?handles=" + document.getElementById('info2').value;
     const res2= await fetch(url2);
     let a1,a2,user1,user2,ratingurl1,rating_exists1,ratingurl2,rating_exists2;
+    let lendata=[],ydata1=[],ydata2=[];
     if(res1.ok){
         a1= await res1.json();
         user1 = a1.result[0];
@@ -149,7 +150,10 @@ async function comparefunction(){
             +'}'
             +'});;';
             document.getElementById("g1holder").appendChild(script);
-
+            if(Xval.length>lendata.length){
+                lendata=Xval;
+            }      
+            ydata1=Yval;
             //end of rating graph
         }
         else{
@@ -157,10 +161,23 @@ async function comparefunction(){
         }
     }
     else{
-        document.getElementById("handle1").innerHTML = ' ';
-        document.getElementById('name1').innerHTML='Not found';
-        document.getElementById('rating1').innerHTML='  ';
-        document.getElementById('maxrating1').innerHTML='  ';
+        document.getElementById("handle1").innerHTML = 'User not found ';
+        document.getElementById('user1dp').style.height='200px';
+        document.getElementById('user1dp').style.width='200px';
+        document.getElementById("handle1").style.color = 'black ';
+        document.getElementById('user1dp').src=' ';
+        document.getElementById('user1dp').style.border='4px outset lightgray';
+        document.getElementById('name1').innerHTML='undefined undefined';
+        document.getElementById('rating1').innerHTML='0 ( NA ) ';
+        document.getElementById('maxrating1').innerHTML='0 ( NA ) ';
+        document.getElementById('contests_appeared1').innerHTML='0';
+        document.getElementById('bestrank1').innerHTML='0 ( NA ) ';
+        document.getElementById('worstrank1').innerHTML='0 ( NA ) ';
+        document.getElementById('maxdplus1').innerHTML='0 ( NA ) ';
+        document.getElementById('maxdminus1').innerHTML='0 ( NA ) ';
+        document.getElementById('g1holder').innerHTML=' ';
+        document.getElementById('dgholder').innerHTML=' ';
+        
     }
 
     if(res2.ok)
@@ -294,18 +311,88 @@ async function comparefunction(){
             +'}'
             +'});;';
             document.getElementById("g2holder").appendChild(script);
+
+            if(Xval.length>lendata.length){
+                lendata=Xval;
+            }
+
+            ydata2=Yval;
+
+            document.getElementById("dgholder").innerHTML=' ';
+            document.getElementById("dgholder").innerHTML=`<canvas id="doublechart" style="width:100%;max-width:800px;display:block;margin:auto;"></canvas>`;
+            document.getElementById("dgholder").style.display='block';
+            document.getElementById("sup_dgholder").style.display='block';
+
+            new Chart("doublechart", {
+              type: "line",
+              data: {
+                labels: lendata,
+                datasets: [{ 
+                    label: user1.handle,
+                    fill: false,
+                    tension: 0.2,
+                    borderWidth: 2,
+                    pointRadius: 2,
+                    pointBackgroundColor: '#6daffe',
+                    pointBorderColor: '#6daffe',
+                    borderColor: "#6daffe",
+                    data: ydata1
+                }, { 
+                    label: user2.handle,
+                    fill: false,
+                    tension: 0.2,
+                    borderWidth: 2,
+                    pointRadius: 2,
+                    pointBackgroundColor: '#ffc233',
+                    pointBorderColor: '#ffc233',
+                    borderColor: "#ffc233",
+                    data: ydata2
+                }]
+              },
+              options: {
+                  scales:{
+                    xAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Round No'
+                    }
+                    }],
+                    yAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Rating'
+                    }
+                    }],
+                }
+            }
+            });
+                
+
         }
         else{
             ;//not filled no need
         }
-
+        
+        
         //end of rating graph
     }
     else{
-        document.getElementById("handle2").innerHTML = ' ';
-        document.getElementById('name2').innerHTML='Not found';
-        document.getElementById('rating2').innerHTML='  ';
-        document.getElementById('maxrating2').innerHTML='  ';
+        document.getElementById("handle2").innerHTML = 'User not found ';
+        document.getElementById('user2dp').style.height='200px';
+        document.getElementById('user2dp').style.width='200px';
+        document.getElementById("handle2").style.color = 'black ';
+        document.getElementById('user2dp').src=' ';
+        document.getElementById('user2dp').style.border='4px outset lightgray';
+        document.getElementById('name2').innerHTML='undefined undefined';
+        document.getElementById('rating2').innerHTML='0 ( NA ) ';
+        document.getElementById('maxrating2').innerHTML='0 ( NA ) ';
+        document.getElementById('contests_appeared2').innerHTML='0';
+        document.getElementById('bestrank2').innerHTML='0 ( NA ) ';
+        document.getElementById('worstrank2').innerHTML='0 ( NA ) ';
+        document.getElementById('maxdplus2').innerHTML='0 ( NA ) ';
+        document.getElementById('maxdminus2').innerHTML='0 ( NA ) ';
+        document.getElementById('g2holder').innerHTML=' ';
+        document.getElementById('dgholder').innerHTML=' ';
     }
 }
 
@@ -313,12 +400,18 @@ function toggleuser2(){
     let checker=document.getElementById("user_2");
     if(checker.style.display==='block'){
         checker.style.display='none';
+        document.getElementById("grp2").style.display='none';
+        document.getElementById("dgholder").style.display='none';
+        document.getElementById("sup_dgholder").style.display='none';
         document.getElementById("Enteruser2").style.display='none';
         document.getElementById("single_multi_icon").innerHTML=`<i class="fa fa-toggle-on" style="font-size:30px;color:#6daffe"></i>`;
         document.getElementById("clickbox").innerHTML="See Stats";
     }
     else if(checker.style.display==='none'){
         checker.style.display='block';
+        document.getElementById("grp2").style.display='block';
+        document.getElementById("dgholder").style.display='block';
+        document.getElementById("sup_dgholder").style.display='block';
         document.getElementById("Enteruser2").style.display='block';
         document.getElementById("single_multi_icon").innerHTML=`<i class="fa fa-toggle-off" style="font-size:30px;color:#6daffe"></i>`;
         document.getElementById("clickbox").innerHTML="Compare";
