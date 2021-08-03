@@ -41,7 +41,7 @@ async function comparefunction(){
         } 
         document.getElementById('name1').innerHTML=user1.firstName+' '+user1.lastName;
         document.getElementById('rating1').innerHTML=' <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+u_col+';">' + user1.rating + '</span>' + '  ( </span> <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user1.rank)+';">' + user1.rank + '</span>)' ;
-        document.getElementById('maxrating1').innerHTML=' <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+u_col+';">' + user1.maxRating + '</span>' + '  ( </span> <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user1.maxRank)+';">' + user1.maxRank + '</span>)' ;
+        document.getElementById('maxrating1').innerHTML=' <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user1.maxRank)+';">' + user1.maxRating + '</span>' + '  ( </span> <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user1.maxRank)+';">' + user1.maxRank + '</span>)' ;
         //assume ok because he has an entity already existing
 
         //start of rating graph 
@@ -113,7 +113,7 @@ async function comparefunction(){
                 }
             }
             str=str+'];';
-            document.getElementById("g1holder").innerHTML=` <canvas id="graph1" style="width:100%;max-width:800px;display:block;margin:auto;"></canvas> `;
+            document.getElementById("g1holder").innerHTML=`<div style="color:#437fc7;font-weight:bold"> `+ user1.handle+"'s chart </div>" +' <canvas id="graph1" style="width:100%;max-width:800px;display:block;margin:auto;"></canvas> ';
             console.log(str);
             var script = document.createElement("script");
             script.innerHTML =  str+ `
@@ -204,7 +204,7 @@ async function comparefunction(){
         } 
         document.getElementById('name2').innerHTML=user2.firstName+' '+user2.lastName;
         document.getElementById('rating2').innerHTML='<span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+u_col+';">' + user2.rating + '</span>' + '  ( </span> <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user2.rank)+';">' + user2.rank + '</span>)' ;
-        document.getElementById('maxrating2').innerHTML='<span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+u_col+';">' + user2.maxRating + '</span>' + '  ( </span> <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user2.maxRank)+';">' + user2.maxRank + '</span>)' ;
+        document.getElementById('maxrating2').innerHTML='<span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user2.maxRank)+';">' + user2.maxRating + '</span>' + '  ( </span> <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user2.maxRank)+';">' + user2.maxRank + '</span>)' ;
         //assume ok because he has an entity already existing
         if(rating_exists2.ok){
             const obj1= await rating_exists2.json();
@@ -274,7 +274,7 @@ async function comparefunction(){
                 }
             }
             str=str+'];';
-            document.getElementById("g2holder").innerHTML=` <canvas id="graph2" style="width:100%;max-width:800px;display:block;margin:auto;"></canvas> `;
+            document.getElementById("g2holder").innerHTML=`<div style="color:#437fc7;font-weight:bold"> `+ user2.handle+"'s chart </div>" +' <canvas id="graph2" style="width:100%;max-width:800px;display:block;margin:auto;"></canvas> ';
             console.log(str);
             var script = document.createElement("script");
             script.innerHTML =  str+ `
@@ -320,6 +320,7 @@ async function comparefunction(){
 
             document.getElementById("dgholder").innerHTML=' ';
             document.getElementById("dgholder").innerHTML=`<canvas id="doublechart" style="width:100%;max-width:800px;display:block;margin:auto;"></canvas>`;
+            document.getElementById("versus").innerHTML='<span style="color:#6daffe">'+user1.handle+'</span> vs <span style="color:#ffc233">'+user2.handle+"</span>";
             document.getElementById("dgholder").style.display='block';
             document.getElementById("sup_dgholder").style.display='block';
 
@@ -328,7 +329,6 @@ async function comparefunction(){
               data: {
                 labels: lendata,
                 datasets: [{ 
-                    label: user1.handle,
                     fill: false,
                     tension: 0.2,
                     borderWidth: 2,
@@ -338,7 +338,6 @@ async function comparefunction(){
                     borderColor: "#6daffe",
                     data: ydata1
                 }, { 
-                    label: user2.handle,
                     fill: false,
                     tension: 0.2,
                     borderWidth: 2,
@@ -350,6 +349,7 @@ async function comparefunction(){
                 }]
               },
               options: {
+                  legend: {display: false},
                   scales:{
                     xAxes: [{
                     scaleLabel: {
