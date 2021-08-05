@@ -17,6 +17,12 @@ async function comparefunction(){
         ratingurl2="https://codeforces.com/api/user.rating?handle="+user2.handle;
         rating_exists2= await fetch(ratingurl2);
     }
+    if((res1.ok) && (res2.ok) ){
+        document.getElementById("sup_dgholder").style.display='block';
+    }
+    else{
+        document.getElementById("sup_dgholder").style.display='none';
+    }
     if(res1.ok)
     {
         let u_col=colorcheck(user1.rank);
