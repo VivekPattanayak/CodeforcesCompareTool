@@ -61,8 +61,20 @@
                 <input id="info2" placeholder="Enter Handle" style="margin-top:5px;">
               </div>
             </div>
-            <div class="row " style="margin:0">
-                <div></div>
+        </div>    
+        
+        <div class=".container-fluid " style=" text-align: center;">
+            <!-- Loader -->
+            <div class="row" id="loadcircle" style="margin:0;display:none;">
+              <div style="height:100px;width:auto;"> </div>
+              <div class="loader" style="margin-left: auto;margin-right: auto;" ></div>
+              <div style="height:100px;width:auto;"> </div>
+            </div>
+        </div>    
+
+        <div class=".container-fluid " id="user_info_total" style=" text-align: center;">
+            <div class="row"  style="margin:0">
+                
                 <!--User 1-->
                 <div id="user_1" class="col-sm" style="background-color:#ffffff;">
                   <img id="user1dp" style="border-radius: 50%;margin-top:10px">
@@ -83,6 +95,10 @@
                     <tr>
                       <th style="color:#62666e;font-weight:bold">Contests Appeared</th>
                       <td><div id="contests_appeared1"> </div> </td>
+                    </tr>
+                    <tr>
+                      <th style="color:#62666e;font-weight:bold">AC Count</th>
+                      <td><div id="problems_solved1"></div> </td>
                     </tr>
                     <tr>
                       <th style="color:#62666e;font-weight:bold">Best Rank</th>
@@ -125,6 +141,10 @@
                       <td><div id="contests_appeared2"> </div> </td>
                     </tr>
                     <tr>
+                      <th style="color:#62666e;font-weight:bold">AC Count</th>
+                      <td><div id="problems_solved2"></div> </td>
+                    </tr>
+                    <tr>
                       <th style="color:#62666e;font-weight:bold">Best Rank</th>
                       <td><div id="bestrank2"></div> </td>
                     </tr>
@@ -147,6 +167,13 @@
               </div>
 
               <div class="row " style="margin:0" >
+                <div id="sup_dgholder" style="display:none">
+                  <div id="versus" style="margin-top: 15px;margin-bottom: 15px;color:#437fc7;font-weight:bold"> Chart Comparison </div>
+                  <div id="dgholder" style="display:none"></div>
+                </div>
+              </div>
+
+              <div class="row " style="margin:0" >
                 <div class="col-sm">
                   <div id="g1holder" style="text-align: center;" >  </div>
                 </div>
@@ -154,12 +181,10 @@
                   <div id="g2holder">  </div>
                 </div>
               </div>
-              <div class="row " style="margin:0" >
-                <div id="sup_dgholder" style="display:none">
-                  <div id="versus" style="margin-top: 15px;margin-bottom: 15px;color:#437fc7;font-weight:bold"> Chart Comparison </div>
-                  <div id="dgholder" style="display:none"></div>
-                </div>
-              </div>
+
+          </div>      
+          
+          <div class=".container-fluid " style=" text-align: center;">
             <div class="row " style="margin:0" >
                     <div >
                         <button class="animate__animated animate__fadeIn animate__delay-1s" id="clickbox" type="button" onclick=comparefunction() style="padding-top:5px;padding-bottom:5px;padding-left:10px;padding-right:10px;margin-top:30px;margin-bottom:30px;background-color: #437fc7;color:white;font-size:16px;border-radius: 11px;border: 0px solid #000000;" >
@@ -167,8 +192,6 @@
                         </button>
                     </div>
             </div>
-          </div>
-          
           </div>
 
           <footer>

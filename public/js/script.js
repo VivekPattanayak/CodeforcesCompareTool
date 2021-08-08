@@ -1,4 +1,9 @@
 async function comparefunction(){
+    
+    //fetching all data _______________________________________________________________________________________________________________________
+    document.getElementById("loadcircle").style.display="block";
+    document.getElementById("user_info_total").style.display="none";
+
     let url1="https://codeforces.com/api/user.info?handles=" + document.getElementById('info1').value;
     const res1= await fetch(url1);
     let url2="https://codeforces.com/api/user.info?handles=" + document.getElementById('info2').value;
@@ -9,12 +14,16 @@ async function comparefunction(){
         a1= await res1.json();
         user1 = a1.result[0];
         ratingurl1="https://codeforces.com/api/user.rating?handle="+user1.handle;
+        problem_info_url1="https://codeforces.com/api/user.status?handle="+document.getElementById('info1').value+"&from=1&count=1000000";
+        problem_data1= await fetch(problem_info_url1);
         rating_exists1= await fetch(ratingurl1);
     }
     if(res2.ok){
         a2= await res2.json();
         user2 = a2.result[0];
         ratingurl2="https://codeforces.com/api/user.rating?handle="+user2.handle;
+        problem_info_url2="https://codeforces.com/api/user.status?handle="+document.getElementById('info2').value+"&from=1&count=1000000";
+        problem_data2= await fetch(problem_info_url2);
         rating_exists2= await fetch(ratingurl2);
     }
     if((res1.ok) && (res2.ok) ){
@@ -23,6 +32,11 @@ async function comparefunction(){
     else{
         document.getElementById("sup_dgholder").style.display='none';
     }
+
+    document.getElementById("user_info_total").style.display="block";
+    document.getElementById("loadcircle").style.display="none";
+    //User 1 stats here ______________________________________________________________________________________________________________________
+
     if(res1.ok)
     {
         let u_col=colorcheck(user1.rank);
@@ -49,6 +63,36 @@ async function comparefunction(){
         document.getElementById('rating1').innerHTML=' <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+u_col+';">' + user1.rating + '</span>' + '  ( </span> <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user1.rank)+';">' + user1.rank + '</span>)' ;
         document.getElementById('maxrating1').innerHTML=' <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user1.maxRank)+';">' + user1.maxRating + '</span>' + '  ( </span> <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user1.maxRank)+';">' + user1.maxRank + '</span>)' ;
         //assume ok because he has an entity already existing
+
+        //problem solve count
+        if(problem_data1.ok){
+            const pd1=  await problem_data1.json();
+            let MP1 = new Map();
+            //let dbg= new Map();
+            for(let i=0;i<pd1.result.length;i++){
+                    let qs=pd1.result[i];
+                //    if(dbg.has(qs.verdict)){
+                //         dbg.set(qs.verdict,dbg.get(qs.verdict)+1);
+                //     }
+                //     else{
+                //         dbg.set(qs.verdict,1);
+                //     } 
+                   if(qs.verdict==="OK"){
+                        if(MP1.has(qs.contestId+qs.problem.index)){
+                            MP1.set(qs.contestId+qs.problem.index,MP1.get(qs.contestId+qs.problem.index)+1);
+                        }
+                        else{
+                            MP1.set(qs.contestId+qs.problem.index,1);
+                        }
+                   } 
+            }
+            //console.log(dbg);
+            console.log(MP1);
+            document.getElementById("problems_solved1").innerHTML=MP1.size;
+        }
+        else{
+            document.getElementById("problems_solved1").innerHTML='Error';
+        }
 
         //start of rating graph 
         if(rating_exists1.ok){
@@ -177,6 +221,7 @@ async function comparefunction(){
         document.getElementById('rating1').innerHTML='0 ( NA ) ';
         document.getElementById('maxrating1').innerHTML='0 ( NA ) ';
         document.getElementById('contests_appeared1').innerHTML='0';
+        document.getElementById('problems_solved1').innerHTML='0';
         document.getElementById('bestrank1').innerHTML='0 ( NA ) ';
         document.getElementById('worstrank1').innerHTML='0 ( NA ) ';
         document.getElementById('maxdplus1').innerHTML='0 ( NA ) ';
@@ -185,6 +230,10 @@ async function comparefunction(){
         document.getElementById('dgholder').innerHTML=' ';
         
     }
+
+
+    //User 2 stats here ______________________________________________________________________________________________________________________
+
 
     if(res2.ok)
     {
@@ -211,6 +260,38 @@ async function comparefunction(){
         document.getElementById('name2').innerHTML=user2.firstName+' '+user2.lastName;
         document.getElementById('rating2').innerHTML='<span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+u_col+';">' + user2.rating + '</span>' + '  ( </span> <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user2.rank)+';">' + user2.rank + '</span>)' ;
         document.getElementById('maxrating2').innerHTML='<span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user2.maxRank)+';">' + user2.maxRating + '</span>' + '  ( </span> <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user2.maxRank)+';">' + user2.maxRank + '</span>)' ;
+        
+        
+        if(problem_data2.ok){
+            const pd1=  await problem_data2.json();
+            let MP1 = new Map();
+            //let dbg= new Map();
+            for(let i=0;i<pd1.result.length;i++){
+                    let qs=pd1.result[i];
+                //    if(dbg.has(qs.verdict)){
+                //         dbg.set(qs.verdict,dbg.get(qs.verdict)+1);
+                //     }
+                //     else{
+                //         dbg.set(qs.verdict,1);
+                //     } 
+                   if(qs.verdict==="OK"){
+                        if(MP1.has(qs.contestId+qs.problem.index)){
+                            MP1.set(qs.contestId+qs.problem.index,MP1.get(qs.contestId+qs.problem.index)+1);
+                        }
+                        else{
+                            MP1.set(qs.contestId+qs.problem.index,1);
+                        }
+                   } 
+            }
+            //console.log(dbg);
+            console.log(MP1);
+            document.getElementById("problems_solved2").innerHTML=MP1.size;
+        }
+        else{
+            document.getElementById("problems_solved1").innerHTML='Error';
+        }
+        
+        
         //assume ok because he has an entity already existing
         if(rating_exists2.ok){
             const obj1= await rating_exists2.json();
@@ -401,6 +482,9 @@ async function comparefunction(){
         document.getElementById('dgholder').innerHTML=' ';
     }
 }
+
+
+//Additional functions ___________________________________________________________________________________________________________________________
 
 function toggleuser2(){
     let checker=document.getElementById("user_2");
