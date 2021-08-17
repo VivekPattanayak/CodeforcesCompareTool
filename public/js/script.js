@@ -1,3 +1,12 @@
+const interval = setInterval(function() {
+    f1();
+}, 1000);
+ 
+function f1(){
+    document.getElementById("info1").style.backgroundColor='red';
+}
+
+
 async function comparefunction(){
     
     //fetching all data _______________________________________________________________________________________________________________________
@@ -494,7 +503,6 @@ function toggleuser2(){
         document.getElementById("dgholder").style.display='none';
         document.getElementById("sup_dgholder").style.display='none';
         document.getElementById("Enteruser2").style.display='none';
-        document.getElementById("single_multi_icon").innerHTML=`<i class="fa fa-toggle-on" style="font-size:30px;color:#6daffe"></i>`;
         document.getElementById("clickbox").innerHTML="See Stats";
     }
     else if(checker.style.display==='none'){
@@ -503,8 +511,10 @@ function toggleuser2(){
         document.getElementById("dgholder").style.display='block';
         document.getElementById("sup_dgholder").style.display='block';
         document.getElementById("Enteruser2").style.display='block';
-        document.getElementById("single_multi_icon").innerHTML=`<i class="fa fa-toggle-off" style="font-size:30px;color:#6daffe"></i>`;
         document.getElementById("clickbox").innerHTML="Compare";
+        let str_tmp=document.getElementById("info2").value;
+        document.getElementById("info2").value='';
+        document.getElementById("info2").value=str_tmp;
     }
 }
 
