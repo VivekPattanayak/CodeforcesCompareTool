@@ -27,8 +27,16 @@
       <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark" >
         <div class="container-fluid text-center">
           <a class="animate__animated animate__fadeInDown navbar-brand" href="#">
-            <img src="/images/Faviconcf.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
-            <span style="font-size: 24px;">Codeforces Compare Tool</span>
+            <div class=".container-fluid " style=" text-align: center;padding:0;margin:0;">
+              <div class="row" style="margin:0">
+                  <div class="col align-items-center" style="padding:0;margin-right:10px;">
+                    <img src="/images/Faviconcf.png" alt="" width="30px">
+                  </div>
+                  <div class="col align-items-center" style="padding:0;font-size:24px;color:white;">
+                    Codeforces Compare Tool
+                  </div>
+              </div>
+          </div>    
           </a>
           <div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,7 +45,14 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent" style="justify-content: center;">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <a onclick="toggleuser2()" class="nav-link active" aria-current="page" href="#">  <span style="text-align: center;">Toggle</span>   <span id="single_multi_icon"> <i class="fa fa-toggle-off" style="font-size:30px;color:#6daffe"></i></span></a>
+                  <div class="row align-items-center" style="margin:0">
+                    <div class="col " style="padding:0;color:white;margin-right:10px;">
+                      Toggle
+                    </div>
+                    <div class="col" style="padding:0;">
+                      <a onclick="toggleuser2()" class="nav-link active" aria-current="page" href="#"> <span id="single_multi_icon"> <i class="fa fa-toggle-off" style="font-size:30px;color:#6daffe"></i></span></a>
+                    </div>
+                  </div>
                 </li>
               </ul>
             </div>
