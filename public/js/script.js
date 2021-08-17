@@ -198,13 +198,15 @@ async function comparefunction(){
                 xAxes: [{
                     scaleLabel: {
                         display: true,
-                        labelString: 'Round No'
-                    }
+                        labelString: 'Round No',
+                        fontColor:'orange',
+                    } , gridLines: { color: '#393c3d' }, ticks: {fontColor: '#a69f93'} 
                 }],
                 yAxes: [{scaleLabel: {
                     display: true,
-                    labelString: 'Rating'
-                  } , ticks: {min:`+minrate+', max:'+maxrate+'}}],'
+                    labelString: 'Rating',
+                    fontColor:'orange',
+                  } , gridLines: { color: '#393c3d' } , ticks: {fontColor: '#a69f93',min:`+minrate+', max:'+maxrate+'}}],'
                 +'}'
             +'}'
             +'});;';
@@ -370,7 +372,7 @@ async function comparefunction(){
                 }
             }
             str=str+'];';
-            document.getElementById("g2holder").innerHTML=`<div style="color:#437fc7;font-weight:bold"> `+ user2.handle+"'s chart </div>" +' <canvas id="graph2" style="width:100%;max-width:800px;display:block;margin:auto;"></canvas> ';
+            document.getElementById("g2holder").innerHTML=`<div style="background-color:#1d2021;color:#437fc7;font-weight:bold"> `+ user2.handle+"'s chart </div>" +' <canvas id="graph2" style="width:100%;max-width:800px;display:block;margin:auto;background-color:#1d2021;"></canvas> ';
             console.log(str);
             var script = document.createElement("script");
             script.innerHTML =  str+ `
@@ -385,7 +387,7 @@ async function comparefunction(){
                 pointRadius: 2,
                 pointBackgroundColor: '#6daffe',
                 pointBorderColor: '#6daffe',
-                backgroundColor: "rgba(0,0,255,1.0)",
+                backgroundColor: "#1d2021",
                 borderColor: "#6daffe",
                 data: Yval
                 }]
@@ -396,13 +398,15 @@ async function comparefunction(){
                 xAxes: [{
                     scaleLabel: {
                         display: true,
-                        labelString: 'Round No'
-                    }
+                        labelString: 'Round No',
+                        fontColor:'orange',
+                    } , gridLines: { color: '#393c3d' }, ticks: {fontColor: '#a69f93'} 
                 }],
                 yAxes: [{scaleLabel: {
                     display: true,
-                    labelString: 'Rating'
-                  } , ticks: {min:`+minrate+', max:'+maxrate+'}}],'
+                    labelString: 'Rating',
+                    fontColor: 'orange'
+                  } , gridLines: { color: '#393c3d' }, ticks: {fontColor: '#a69f93',min:`+minrate+', max:'+maxrate+'}}],'
                 +'}'
             +'}'
             +'});;';
@@ -450,14 +454,16 @@ async function comparefunction(){
                     xAxes: [{
                     scaleLabel: {
                         display: true,
-                        labelString: 'Round No'
-                    }
+                        labelString: 'Round No',
+                        fontColor:'orange',
+                    }, gridLines: { color: '#393c3d' }, ticks: {fontColor: '#a69f93'} 
                     }],
                     yAxes: [{
                     scaleLabel: {
                         display: true,
-                        labelString: 'Rating'
-                    }
+                        labelString: 'Rating',
+                        fontColor:'orange',
+                    }, gridLines: { color: '#393c3d' }, ticks: {fontColor: '#a69f93'}
                     }],
                 }
             }
