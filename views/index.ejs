@@ -23,8 +23,9 @@
   </head>
     <body>
       
+      <!-- --------------------------------------------------------------------NAV---------------------------------------------------------------------------------------->
 
-      <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark" >
+      <nav class="navbar sticky-top navbar-expand-lg navbar-dark " style="background-color: #0d0d0d;" >
         <div class="container-fluid text-center" style="background-color:inherit;">
           <a class="animate__animated animate__fadeInDown navbar-brand" href="#" style="background-color:inherit;">
             <div class=".container-fluid " style=" background-color:inherit;text-align: center;padding:0;margin:0;">
@@ -63,37 +64,45 @@
         </div>
       </nav>
 
+      <!-- --------------------------------------------------------------------INPUT---------------------------------------------------------------------------------------->
 
         <div class=".container-fluid " style=" text-align: center;">
-            <div class="row " style="margin:0" >
-              <div class="col-sm " style="background-color:#6daffe;">
-                <div  style="background-color:#6daffe;margin-top:10px">
+            <div class="row " style="color:white;margin:0" >
+              <div class="col-sm " style="color:#fab905;background-color:#1a1b1c;">
+                <div  style="background-color:inherit;margin-top:10px">
                     Enter user 1:
                 </div>
                 <input id="info1" placeholder="Enter Handle" style="margin-top:5px;margin-bottom: 15px;border: 0;border-bottom: 2px solid white;background-color: transparent;outline:none">
               </div>
-              <div class="col-sm" id="Enteruser2" style="color:white;background-color:#437fc7;padding-bottom: 15px;">
-                <div style="background-color:#437fc7;margin-top:10px">
+              <div class="col-sm" id="Enteruser2" style="color:#42d4f5;background-color:#1a1b1c;padding-bottom: 15px;">
+                <div style="background-color:inherit;margin-top:10px">
                     Enter user 2:
                 </div>
                 <input id="info2" placeholder="Enter Handle" style="margin-top:5px;border: 0;border-bottom: 2px solid white;background-color: transparent;outline:none">
               </div>
             </div>
         </div>    
+
+
+        <!-- --------------------------------------------------------------------LOADER---------------------------------------------------------------------------------------->
         
+
         <div class=".container-fluid " style=" text-align: center;">
             <!-- Loader -->
             <div class="row" id="loadcircle" style="margin:0;display:none;">
               <div style="height:100px;width:auto;"> </div>
-              <div class="loader" style="margin-left: auto;margin-right: auto;" ></div>
+              <div class="loader" id="load_circle_rgb" style="margin-left: auto;margin-right: auto;" ></div>
               <div style="height:100px;width:auto;"> </div>
             </div>
         </div>    
 
+        <!-- --------------------------------------------------------------------USERS---------------------------------------------------------------------------------------->
+        
         <div class=".container-fluid " id="user_info_total" style=" text-align: center;">
             <div class="row"  style="margin:0">
                 
-                <!--User 1-->
+                <!-- --------------------------------------------------------------------USER1---------------------------------------------------------------------------------------->
+                
                 <div id="user_1" class="col-sm" style="background-color:#181a1b;">
                   <img id="user1dp" style="border-radius: 50%;margin-top:10px">
                   <div id="handle1" style="font-family:verdana;font-weight: bold;font-size:18px;margin-top:10px"> </div>
@@ -137,7 +146,8 @@
                   </table>
                 </div>
                 
-                <!--User 2-->
+                <!-- --------------------------------------------------------------------USER2---------------------------------------------------------------------------------------->
+            
                 <div id="user_2" class="col-sm" style="background-color:#1d2021;display:block;">
                   <img id="user2dp" style="border-radius: 50%;margin-top:10px">
                   <div id="handle2" style="background-color:#1d2021;font-size:18px;font-family:verdana;font-weight: bold;margin-top:10px"> </div>
@@ -183,12 +193,14 @@
                 
 
               </div>
-
+              <!-- --------------------------------------------------------------------SUPERIMPOSED GRAPH---------------------------------------------------------------------------------------->
+              
               <div class="row " id="sup_dgholder" style="display:none;margin:0;padding-bottom: 20px;" >
                   <div id="versus" style="margin-top: 15px;margin-bottom: 15px;color:#437fc7;font-weight:bold"> </div>
                   <div id="dgholder" style="display:none"></div>
               </div>
 
+              <!-- --------------------------------------------------------------------USER GRAPHS---------------------------------------------------------------------------------------->
               <div class="row " style="margin:0;" >
                 <div class="col-sm" >
                   <div id="g1holder" style="padding-top:20px;padding-bottom: 20px;" >  </div>
@@ -199,11 +211,13 @@
               </div>
 
           </div>      
-          
+
+          <!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+              
           <div class=".container-fluid " style=" text-align: center;">
             <div class="row " style="margin:0" >
                     <div >
-                        <button class="animate__animated animate__fadeIn animate__delay-1s" id="clickbox" type="button" onclick=comparefunction() style="padding-top:5px;padding-bottom:5px;padding-left:10px;padding-right:10px;margin-top:30px;margin-bottom:30px;background-color: #437fc7;color:white;font-size:16px;border-radius: 11px;border: 0px solid #000000;" >
+                        <button class="animate__animated animate__fadeIn animate__delay-1s" id="clickbox" type="button" onclick=comparefunction() style="padding-top:5px;padding-bottom:5px;padding-left:10px;padding-right:10px;margin-top:30px;margin-bottom:30px;background-color: #356db1;color:white;font-size:16px;border-radius: 11px;border: 0px solid #000000;" >
                             Compare
                         </button>
                     </div>

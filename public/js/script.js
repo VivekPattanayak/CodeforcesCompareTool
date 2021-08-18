@@ -1,11 +1,12 @@
-const interval = setInterval(function() {
-    f1();
-}, 1000);
- 
-function f1(){
-    document.getElementById("info1").style.backgroundColor='red';
-}
+var indx=0;
 
+var timer = setInterval( rgbloader, 1200);
+
+function rgbloader(){
+    var col_arr = ['blue', '#f70a6d', '#0af70e', 'yellow'];
+    document.getElementById('load_circle_rgb').style.borderTop='5px solid '+col_arr[indx];
+    indx=(indx+1)%4;
+}
 
 async function comparefunction(){
     
@@ -61,12 +62,14 @@ async function comparefunction(){
         else{
             document.getElementById('handle1').style.color=u_col;
             let user_str=user1.handle;
-            let str="<span style='color:black;'>"+user_str.charAt(0)+"</span><span>";
+            let str="<span style='color:white;'>"+user_str.charAt(0)+"</span><span>";
             for (var i = 1; i < user_str.length; i++) {
                 str=str+user_str[i];
             }
             str=str+"</span>";
             document.getElementById("handle1").innerHTML = str;
+            document.getElementById('user1dp').style.border='4px solid white';
+            document.getElementById("user1dp").style.boxShadow="0px 0px 10px #fff";
         } 
         document.getElementById('name1').innerHTML=user1.firstName+' '+user1.lastName;
         document.getElementById('rating1').innerHTML=' <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+u_col+';">' + user1.rating + '</span>' + '  ( </span> <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user1.rank)+';">' + user1.rank + '</span>)' ;
@@ -172,7 +175,7 @@ async function comparefunction(){
                 }
             }
             str=str+'];';
-            document.getElementById("g1holder").innerHTML=`<div style="color:#437fc7;font-weight:bold"> `+ user1.handle+"'s chart </div>" +' <canvas id="graph1" style="width:100%;max-width:800px;display:block;margin:auto;"></canvas> ';
+            document.getElementById("g1holder").innerHTML=`<div style="color:#33ccff;font-weight:bold"> `+ user1.handle+"'s chart </div>" +' <canvas id="graph1" style="width:100%;max-width:800px;display:block;margin:auto;"></canvas> ';
             console.log(str);
             var script = document.createElement("script");
             script.innerHTML =  str+ `
@@ -183,12 +186,12 @@ async function comparefunction(){
                 datasets: [{
                 fill: false,
                 tension: 0.2,
-                borderWidth: 2,
+                borderWidth: 0,
                 pointRadius: 2,
-                pointBackgroundColor: '#6daffe',
-                pointBorderColor: '#6daffe',
-                backgroundColor: "rgba(0,0,255,1.0)",
-                borderColor: "#6daffe",
+                pointBackgroundColor: '#33ccff',
+                pointBorderColor: '#33ccff',
+                backgroundColor: "#1d2021",
+                borderColor: "#0099cc",
                 data: Yval
                 }]
             },
@@ -199,13 +202,13 @@ async function comparefunction(){
                     scaleLabel: {
                         display: true,
                         labelString: 'Round No',
-                        fontColor:'orange',
+                        fontColor:'#a69f93',
                     } , gridLines: { color: '#393c3d' }, ticks: {fontColor: '#a69f93'} 
                 }],
                 yAxes: [{scaleLabel: {
                     display: true,
                     labelString: 'Rating',
-                    fontColor:'orange',
+                    fontColor:'#a69f93',
                   } , gridLines: { color: '#393c3d' } , ticks: {fontColor: '#a69f93',min:`+minrate+', max:'+maxrate+'}}],'
                 +'}'
             +'}'
@@ -225,7 +228,7 @@ async function comparefunction(){
         document.getElementById("handle1").innerHTML = 'User not found ';
         document.getElementById('user1dp').style.height='200px';
         document.getElementById('user1dp').style.width='200px';
-        document.getElementById("handle1").style.color = 'black ';
+        document.getElementById("handle1").style.color = 'white';
         document.getElementById('user1dp').src=' ';
         document.getElementById('user1dp').style.border='4px outset lightgray';
         document.getElementById('name1').innerHTML='undefined undefined';
@@ -261,12 +264,14 @@ async function comparefunction(){
         else{
             document.getElementById('handle2').style.color=u_col;
             let user_str=user2.handle;
-            let str="<span style='color:black;'>"+user_str.charAt(0)+"</span><span>";
+            let str="<span style='color:white;background-color: rgb(29, 32, 33)'>"+user_str.charAt(0)+"</span><span style='background-color: rgb(29, 32, 33)'>";
             for (var i = 1; i < user_str.length; i++) {
                 str=str+user_str[i];
             }
             str=str+"</span>";
             document.getElementById("handle2").innerHTML = str;
+            document.getElementById('user2dp').style.border='4px solid white';
+            document.getElementById("user2dp").style.boxShadow="0px 0px 10px #fff";
         } 
         document.getElementById('name2').innerHTML=user2.firstName+' '+user2.lastName;
         document.getElementById('rating2').innerHTML='<span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+u_col+';">' + user2.rating + '</span>' + '  ( </span> <span style="font-size:13px;font-family:verdana;font-weight:bold;color:'+colorcheck(user2.rank)+';">' + user2.rank + '</span>)' ;
@@ -372,7 +377,7 @@ async function comparefunction(){
                 }
             }
             str=str+'];';
-            document.getElementById("g2holder").innerHTML=`<div style="background-color:#1d2021;color:#437fc7;font-weight:bold"> `+ user2.handle+"'s chart </div>" +' <canvas id="graph2" style="width:100%;max-width:800px;display:block;margin:auto;background-color:#1d2021;"></canvas> ';
+            document.getElementById("g2holder").innerHTML=`<div style="background-color:#1d2021;color:#33ccff;font-weight:bold"> `+ user2.handle+"'s chart </div>" +' <canvas id="graph2" style="width:100%;max-width:800px;display:block;margin:auto;background-color:#1d2021;"></canvas> ';
             console.log(str);
             var script = document.createElement("script");
             script.innerHTML =  str+ `
@@ -383,12 +388,12 @@ async function comparefunction(){
                 datasets: [{
                 fill: false,
                 tension: 0.2,
-                borderWidth: 2,
+                borderWidth: 0,
                 pointRadius: 2,
-                pointBackgroundColor: '#6daffe',
-                pointBorderColor: '#6daffe',
+                pointBackgroundColor: '#33ccff',
+                pointBorderColor: '#33ccff',
                 backgroundColor: "#1d2021",
-                borderColor: "#6daffe",
+                borderColor: "#0099cc",
                 data: Yval
                 }]
             },
@@ -399,13 +404,13 @@ async function comparefunction(){
                     scaleLabel: {
                         display: true,
                         labelString: 'Round No',
-                        fontColor:'orange',
+                        fontColor:'#a69f93',
                     } , gridLines: { color: '#393c3d' }, ticks: {fontColor: '#a69f93'} 
                 }],
                 yAxes: [{scaleLabel: {
                     display: true,
                     labelString: 'Rating',
-                    fontColor: 'orange'
+                    fontColor: '#a69f93'
                   } , gridLines: { color: '#393c3d' }, ticks: {fontColor: '#a69f93',min:`+minrate+', max:'+maxrate+'}}],'
                 +'}'
             +'}'
@@ -420,7 +425,7 @@ async function comparefunction(){
 
             document.getElementById("dgholder").innerHTML=' ';
             document.getElementById("dgholder").innerHTML=`<canvas id="doublechart" style="width:100%;max-width:800px;display:block;margin:auto;"></canvas>`;
-            document.getElementById("versus").innerHTML='<span style="color:#6daffe">'+user1.handle+'</span> vs <span style="color:#ffc233">'+user2.handle+"</span>";
+            document.getElementById("versus").innerHTML='<span style="color:#00ff99">'+user1.handle+'</span> vs <span style="color:#33ccff">'+user2.handle+"</span>";
             document.getElementById("dgholder").style.display='block';
             document.getElementById("sup_dgholder").style.display='block';
 
@@ -431,20 +436,20 @@ async function comparefunction(){
                 datasets: [{ 
                     fill: false,
                     tension: 0.2,
-                    borderWidth: 2,
+                    borderWidth: 0,
                     pointRadius: 2,
-                    pointBackgroundColor: '#6daffe',
-                    pointBorderColor: '#6daffe',
-                    borderColor: "#6daffe",
+                    pointBackgroundColor: '#00ff99',
+                    pointBorderColor: '#00ff99',
+                    borderColor: "#00b36b",
                     data: ydata1
                 }, { 
                     fill: false,
                     tension: 0.2,
-                    borderWidth: 2,
+                    borderWidth: 0,
                     pointRadius: 2,
-                    pointBackgroundColor: '#ffc233',
-                    pointBorderColor: '#ffc233',
-                    borderColor: "#ffc233",
+                    pointBackgroundColor: '#33ccff',
+                    pointBorderColor: '#33ccff',
+                    borderColor: "#0099cc",
                     data: ydata2
                 }]
               },
@@ -455,14 +460,14 @@ async function comparefunction(){
                     scaleLabel: {
                         display: true,
                         labelString: 'Round No',
-                        fontColor:'orange',
+                        fontColor:'#a69f93',
                     }, gridLines: { color: '#393c3d' }, ticks: {fontColor: '#a69f93'} 
                     }],
                     yAxes: [{
                     scaleLabel: {
                         display: true,
                         labelString: 'Rating',
-                        fontColor:'orange',
+                        fontColor:'#a69f93',
                     }, gridLines: { color: '#393c3d' }, ticks: {fontColor: '#a69f93'}
                     }],
                 }
@@ -482,7 +487,7 @@ async function comparefunction(){
         document.getElementById("handle2").innerHTML = 'User not found ';
         document.getElementById('user2dp').style.height='200px';
         document.getElementById('user2dp').style.width='200px';
-        document.getElementById("handle2").style.color = 'black ';
+        document.getElementById("handle2").style.color = 'white';
         document.getElementById('user2dp').src=' ';
         document.getElementById('user2dp').style.border='4px outset lightgray';
         document.getElementById('name2').innerHTML='undefined undefined';
@@ -526,19 +531,19 @@ function toggleuser2(){
 
 function colorcheck(str){
     if(str=='newbie'){
-        return 'grey';
+        return '#a69f93';
     }
     else if(str=='pupil'){
-        return 'green';
+        return '#2dd256';
     }
     else if(str=='specialist'){
-        return '#03a89e';
+        return '#04d2c4';
     }
     else if(str=='expert'){
-        return 'blue';
+        return '#337dff';
     }
     else if(str=='candidate master'){
-        return '#a0a';
+        return '#ff55ff';
     }
     else if(str=='master'){
         return '#ff8c00';
@@ -555,5 +560,5 @@ function colorcheck(str){
     else if(str=='legendary grandmaster'){
         return 'red';
     }
-    return 'black';
+    return '#e0ddd1';
 }
