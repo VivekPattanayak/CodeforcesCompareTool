@@ -3,12 +3,25 @@ var indx=0;
 var timer = setInterval( rgbloader, 1200);
 
 function rgbloader(){
-    var col_arr = ['blue', '#f70a6d', '#0af70e', 'yellow'];
+    var col_arr = ['#9AA7B8'];
     document.getElementById('load_circle_rgb').style.borderTop='5px solid '+col_arr[indx];
-    indx=(indx+1)%4;
+    indx=(indx+1)%2;
 }
 
 async function comparefunction(){
+
+    let MR1= new Map();
+    let MR2= new Map();
+
+    let xdata_psolve_common=[],u1_psolve_data=[],u2_psolve_data=[];
+
+    for(let i1=800;i1<=3500;i1+=100){
+        MR1.set(i1,0);
+        MR2.set(i1,0);
+        xdata_psolve_common.push(i1);
+        u1_psolve_data.push(0);
+        u2_psolve_data.push(0);
+    }
     
     //fetching all data _______________________________________________________________________________________________________________________
     document.getElementById("loadcircle").style.display="block";
@@ -80,26 +93,23 @@ async function comparefunction(){
         if(problem_data1.ok){
             const pd1=  await problem_data1.json();
             let MP1 = new Map();
-            //let dbg= new Map();
             for(let i=0;i<pd1.result.length;i++){
                     let qs=pd1.result[i];
-                //    if(dbg.has(qs.verdict)){
-                //         dbg.set(qs.verdict,dbg.get(qs.verdict)+1);
-                //     }
-                //     else{
-                //         dbg.set(qs.verdict,1);
-                //     } 
                    if(qs.verdict==="OK"){
-                        if(MP1.has(qs.contestId+qs.problem.index)){
-                            MP1.set(qs.contestId+qs.problem.index,MP1.get(qs.contestId+qs.problem.index)+1);
-                        }
-                        else{
+                        if(MP1.get(qs.contestId+qs.problem.index)===undefined){
                             MP1.set(qs.contestId+qs.problem.index,1);
                         }
+                        else{
+                            MP1.set(qs.contestId+qs.problem.index,MP1.get(qs.contestId+qs.problem.index)+1);
+                        }
+                        if(MR1.get(qs.problem.rating)!=undefined){
+                            MR1.set(qs.problem.rating,MR1.get(qs.problem.rating)+1);
+                        }
                    } 
+                   for(let i1=0;i1<xdata_psolve_common.length;i1++){
+                        u1_psolve_data[i1]=MR1.get(xdata_psolve_common[i1]);
+                   }
             }
-            //console.log(dbg);
-            console.log(MP1);
             document.getElementById("problems_solved1").innerHTML=MP1.size;
         }
         else{
@@ -202,14 +212,14 @@ async function comparefunction(){
                     scaleLabel: {
                         display: true,
                         labelString: 'Round No',
-                        fontColor:'#a69f93',
-                    } , gridLines: { color: '#393c3d' }, ticks: {fontColor: '#a69f93'} 
+                        fontColor:'#9AA7B8',
+                    } , gridLines: { color: '#434c56' }, ticks: {fontColor: '#9AA7B8'} 
                 }],
                 yAxes: [{scaleLabel: {
                     display: true,
                     labelString: 'Rating',
-                    fontColor:'#a69f93',
-                  } , gridLines: { color: '#393c3d' } , ticks: {fontColor: '#a69f93',min:`+minrate+', max:'+maxrate+'}}],'
+                    fontColor:'#9AA7B8',
+                  } , gridLines: { color: '#434c56' } , ticks: {fontColor: '#9AA7B8',min:`+minrate+', max:'+maxrate+'}}],'
                 +'}'
             +'}'
             +'});;';
@@ -219,6 +229,39 @@ async function comparefunction(){
             }      
             ydata1=Yval;
             //end of rating graph
+
+            document.getElementById("u1_n_prb").innerHTML='Problem ratings of '+user1.handle;
+            document.getElementById("u1_prob_holder").innerHTML=`<canvas id="u1_pchart" style="width:100%;max-width:800px;display:block;margin:auto;"></canvas>`;
+            
+            new Chart("u1_pchart", {
+                type: 'bar',
+                data: {
+                    labels: xdata_psolve_common,
+                    datasets: [{ 
+                        backgroundColor: '#33ccff',
+                        data: u1_psolve_data
+                    }]
+                  },
+                options: {
+                    legend: {display: false},
+                    scales:{
+                      xAxes: [{
+                      scaleLabel: {
+                          display: true,
+                          labelString: 'Problem Rating',
+                          fontColor:'#9AA7B8',
+                      }, gridLines: { color: '#434c56' }, ticks: {fontColor: '#9AA7B8'} 
+                      }],
+                      yAxes: [{
+                      scaleLabel: {
+                          display: true,
+                          labelString: 'No of problems',
+                          fontColor:'#9AA7B8',
+                      }, gridLines: { color: '#434c56' }, ticks: {fontColor: '#9AA7B8'}
+                      }],
+                  }
+              }
+              });
         }
         else{
             ;//not filled no need
@@ -264,7 +307,7 @@ async function comparefunction(){
         else{
             document.getElementById('handle2').style.color=u_col;
             let user_str=user2.handle;
-            let str="<span style='color:white;background-color: rgb(29, 32, 33)'>"+user_str.charAt(0)+"</span><span style='background-color: rgb(29, 32, 33)'>";
+            let str="<span style='color:white;background-color:inherit'>"+user_str.charAt(0)+"</span><span style='background-color:inherit'>";
             for (var i = 1; i < user_str.length; i++) {
                 str=str+user_str[i];
             }
@@ -281,15 +324,8 @@ async function comparefunction(){
         if(problem_data2.ok){
             const pd1=  await problem_data2.json();
             let MP1 = new Map();
-            //let dbg= new Map();
             for(let i=0;i<pd1.result.length;i++){
                     let qs=pd1.result[i];
-                //    if(dbg.has(qs.verdict)){
-                //         dbg.set(qs.verdict,dbg.get(qs.verdict)+1);
-                //     }
-                //     else{
-                //         dbg.set(qs.verdict,1);
-                //     } 
                    if(qs.verdict==="OK"){
                         if(MP1.has(qs.contestId+qs.problem.index)){
                             MP1.set(qs.contestId+qs.problem.index,MP1.get(qs.contestId+qs.problem.index)+1);
@@ -297,11 +333,16 @@ async function comparefunction(){
                         else{
                             MP1.set(qs.contestId+qs.problem.index,1);
                         }
+                        if(MR2.get(qs.problem.rating)!=undefined){
+                            MR2.set(qs.problem.rating,MR2.get(qs.problem.rating)+1);
+                        }
                    } 
             }
             //console.log(dbg);
-            console.log(MP1);
             document.getElementById("problems_solved2").innerHTML=MP1.size;
+            for(let i1=0;i1<xdata_psolve_common.length;i1++){
+                u2_psolve_data[i1]=MR2.get(xdata_psolve_common[i1]);
+            }
         }
         else{
             document.getElementById("problems_solved1").innerHTML='Error';
@@ -377,7 +418,7 @@ async function comparefunction(){
                 }
             }
             str=str+'];';
-            document.getElementById("g2holder").innerHTML=`<div style="background-color:#1d2021;color:#33ccff;font-weight:bold"> `+ user2.handle+"'s chart </div>" +' <canvas id="graph2" style="width:100%;max-width:800px;display:block;margin:auto;background-color:#1d2021;"></canvas> ';
+            document.getElementById("g2holder").innerHTML=`<div style="color:#33ccff;font-weight:bold"> `+ user2.handle+"'s chart </div>" +' <canvas id="graph2" style="width:100%;max-width:800px;display:block;margin:auto;"></canvas> ';
             console.log(str);
             var script = document.createElement("script");
             script.innerHTML =  str+ `
@@ -404,14 +445,14 @@ async function comparefunction(){
                     scaleLabel: {
                         display: true,
                         labelString: 'Round No',
-                        fontColor:'#a69f93',
-                    } , gridLines: { color: '#393c3d' }, ticks: {fontColor: '#a69f93'} 
+                        fontColor:'#9AA7B8',
+                    } , gridLines: { color: '#434c56' }, ticks: {fontColor: '#9AA7B8'} 
                 }],
                 yAxes: [{scaleLabel: {
                     display: true,
                     labelString: 'Rating',
-                    fontColor: '#a69f93'
-                  } , gridLines: { color: '#393c3d' }, ticks: {fontColor: '#a69f93',min:`+minrate+', max:'+maxrate+'}}],'
+                    fontColor: '#9AA7B8'
+                  } , gridLines: { color: '#434c56' }, ticks: {fontColor: '#9AA7B8',min:`+minrate+', max:'+maxrate+'}}],'
                 +'}'
             +'}'
             +'});;';
@@ -426,8 +467,10 @@ async function comparefunction(){
             document.getElementById("dgholder").innerHTML=' ';
             document.getElementById("dgholder").innerHTML=`<canvas id="doublechart" style="width:100%;max-width:800px;display:block;margin:auto;"></canvas>`;
             document.getElementById("versus").innerHTML='<span style="color:#00ff99">'+user1.handle+'</span> vs <span style="color:#33ccff">'+user2.handle+"</span>";
+            document.getElementById("name_vs_prb").innerHTML='Problem ratings (<span style="color:#00ff99">'+user1.handle+'</span> : <span style="color:#33ccff">'+user2.handle+"</span>)";
             document.getElementById("dgholder").style.display='block';
             document.getElementById("sup_dgholder").style.display='block';
+            document.getElementById("sup_problemvs").style.display='block';
 
             new Chart("doublechart", {
               type: "line",
@@ -460,19 +503,55 @@ async function comparefunction(){
                     scaleLabel: {
                         display: true,
                         labelString: 'Round No',
-                        fontColor:'#a69f93',
-                    }, gridLines: { color: '#393c3d' }, ticks: {fontColor: '#a69f93'} 
+                        fontColor:'#9AA7B8',
+                    }, gridLines: { color: '#434c56' }, ticks: {fontColor: '#9AA7B8'} 
                     }],
                     yAxes: [{
                     scaleLabel: {
                         display: true,
                         labelString: 'Rating',
-                        fontColor:'#a69f93',
-                    }, gridLines: { color: '#393c3d' }, ticks: {fontColor: '#a69f93'}
+                        fontColor:'#9AA7B8',
+                    }, gridLines: { color: '#434c56' }, ticks: {fontColor: '#9AA7B8'}
                     }],
                 }
             }
             });
+
+
+            document.getElementById("problem_rating_holder").innerHTML=`<canvas id="prh_chart" style="width:100%;max-width:800px;display:block;margin:auto;"></canvas>`;
+
+            new Chart("prh_chart", {
+                type: 'bar',
+                data: {
+                    labels: xdata_psolve_common,
+                    datasets: [{ 
+                        backgroundColor: '#00ff99',
+                        data: u1_psolve_data
+                    }, { 
+                        backgroundColor: '#33ccff',
+                        data: u2_psolve_data
+                    }]
+                  },
+                options: {
+                    legend: {display: false},
+                    scales:{
+                      xAxes: [{
+                      scaleLabel: {
+                          display: true,
+                          labelString: 'Problem Rating',
+                          fontColor:'#9AA7B8',
+                      }, gridLines: { color: '#434c56' }, ticks: {fontColor: '#9AA7B8'} 
+                      }],
+                      yAxes: [{
+                      scaleLabel: {
+                          display: true,
+                          labelString: 'No of problems',
+                          fontColor:'#9AA7B8',
+                      }, gridLines: { color: '#434c56' }, ticks: {fontColor: '#9AA7B8'}
+                      }],
+                  }
+              }
+              });
                 
 
         }
@@ -500,6 +579,7 @@ async function comparefunction(){
         document.getElementById('maxdminus2').innerHTML='0 ( NA ) ';
         document.getElementById('g2holder').innerHTML=' ';
         document.getElementById('dgholder').innerHTML=' ';
+        document.getElementById('problem_rating_holder').innerHTML=' ';
     }
 }
 
@@ -515,6 +595,8 @@ function toggleuser2(){
         document.getElementById("sup_dgholder").style.display='none';
         document.getElementById("Enteruser2").style.display='none';
         document.getElementById("clickbox").innerHTML="See Stats";
+        document.getElementById("sup_problemvs").style.display='none';
+        document.getElementById("u1_only_prob").style.display='block';
     }
     else if(checker.style.display==='none'){
         checker.style.display='block';
@@ -522,10 +604,12 @@ function toggleuser2(){
         document.getElementById("dgholder").style.display='block';
         document.getElementById("sup_dgholder").style.display='block';
         document.getElementById("Enteruser2").style.display='block';
+        document.getElementById("sup_problemvs").style.display='block';
         document.getElementById("clickbox").innerHTML="Compare";
         let str_tmp=document.getElementById("info2").value;
         document.getElementById("info2").value='';
         document.getElementById("info2").value=str_tmp;
+        document.getElementById("u1_only_prob").style.display='none';
     }
 }
 
@@ -551,14 +635,8 @@ function colorcheck(str){
     else if(str=='international master'){
         return 'orange';
     }
-    else if(str=='grandmaster'){
-        return 'red';
-    }
-    else if(str=='international grandmaster'){
-        return 'red';
-    }
-    else if(str=='legendary grandmaster'){
-        return 'red';
+    else if(str=='grandmaster'||str=='international grandmaster'||str=='legendary grandmaster'){
+        return '#ff471a';
     }
     return '#e0ddd1';
 }
