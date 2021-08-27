@@ -68,6 +68,7 @@ async function comparefunction(){
         document.getElementById('user1dp').style.height='200px';
         document.getElementById('user1dp').style.width='200px';
         document.getElementById('user1dp').style.border='4px outset '+u_col;
+        document.getElementById("user1dp").style.boxShadow='none';
         document.getElementById('handle1').innerHTML=user1.handle;
         if(user1.rank!='legendary grandmaster'){
             document.getElementById('handle1').style.color=u_col;
@@ -285,6 +286,7 @@ async function comparefunction(){
         document.getElementById('maxdminus1').innerHTML='0 ( NA ) ';
         document.getElementById('g1holder').innerHTML=' ';
         document.getElementById('dgholder').innerHTML=' ';
+        document.getElementById("user1dp").style.boxShadow='none';
         
     }
 
@@ -300,6 +302,7 @@ async function comparefunction(){
         document.getElementById('user2dp').style.height='200px';
         document.getElementById('user2dp').style.width='200px';
         document.getElementById('user2dp').style.border='4px outset '+u_col;
+        document.getElementById("user2dp").style.boxShadow='none';
         document.getElementById('handle2').innerHTML=user2.handle;
         if(user2.rank!='legendary grandmaster'){
             document.getElementById('handle2').style.color=u_col;
@@ -580,6 +583,7 @@ async function comparefunction(){
         document.getElementById('g2holder').innerHTML=' ';
         document.getElementById('dgholder').innerHTML=' ';
         document.getElementById('problem_rating_holder').innerHTML=' ';
+        document.getElementById("user2dp").style.boxShadow='none';
     }
 }
 
