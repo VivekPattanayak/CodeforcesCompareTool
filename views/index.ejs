@@ -105,8 +105,8 @@
                 
                 <div id="user_1" class="col-sm" style="background-color:#191c22;">
                   <img id="user1dp" style="border-radius: 50%;margin-top:10px">
-                  <div id="handle1" style="font-family:verdana;font-weight: bold;font-size:18px;margin-top:10px"> </div>
-                  <table id="tab_1" style="color:#9AA7B8;width:80%;max-width:500px;margin-left: auto; margin-right: auto;display:none;">
+                  <div id="handle1" class="cl_user_handle" onclick="load_cf_page('handle1')" style="font-family:verdana;font-weight: bold;font-size:18px;margin-top:10px"> </div>
+                  <table id="tab_1" class="table_des" style="width:80%;max-width:500px;margin-left: auto; margin-right: auto;display:none;">
                     <tr>
                       <th style="font-weight:bold">Name</th>
                       <td><div id="name1" style="margin-top:10px"> </div></td>
@@ -150,11 +150,11 @@
             
                 <div id="user_2" class="col-sm" style="background-color:#222630;display:block;">
                   <img id="user2dp" style="border-radius: 50%;margin-top:10px">
-                  <div id="handle2" style="background-color:inherit;font-size:18px;font-family:verdana;font-weight: bold;margin-top:10px"> </div>
-                  <table id="tab_2" style="background-color:inherit;color:#9AA7B8;width:80%;max-width:500px;margin-left: auto; margin-right: auto;display:none;">
+                  <div id="handle2" class="cl_user_handle" onclick="load_cf_page('handle2')" style="background-color:inherit;font-size:18px;font-family:verdana;font-weight: bold;margin-top:10px"> </div>
+                  <table id="tab_2" class="table_des" style="background-color:inherit;width:80%;max-width:500px;margin-left: auto; margin-right: auto;display:none;">
                     <tbody style="background-color: inherit;">
                     <tr>
-                      <th style="font-weight:bold;">Name</th>
+                      <th style="font-weight:bold;margin-top:10px;">Name</th>
                       <td><div id="name2" style="margin-top:10px;"> </div></td>
                     </tr>
                     <tr >
@@ -212,7 +212,10 @@
                 <div id="name_vs_prb" style="margin-top: 15px;margin-bottom: 15px;color:#437fc7;font-weight:bold"> </div>
                 <div id="problem_rating_holder" ></div>
               </div>
-
+              <!------------------------------------------------------------------- RECENTLY SOLVED ------------------------------------------------------------------>
+              
+              <div class="row" id="recently_solved_u1"> </div>
+              <div class="row" id="recently_solved_u2"> </div>
               <!----------------------------------------------------------------------USER GRAPHS---------------------------------------------------------------------------------------->
               <div class="row " style="margin:0;" >
                 <div class="col-sm" >

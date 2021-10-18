@@ -644,3 +644,18 @@ function colorcheck(str){
     }
     return '#e0ddd1';
 }
+
+
+function load_cf_page(div_id)
+{
+    let u_handle=document.getElementById(div_id).innerHTML;
+    u_handle=u_handle.trim();
+    let err="User not found"
+    let cf_link=`https://codeforces.com/profile/${u_handle}`;
+    if(u_handle == err){
+        console.log('Invalid handle!');
+    }
+    else{
+        window.open(cf_link, '_blank').focus();
+    }
+}

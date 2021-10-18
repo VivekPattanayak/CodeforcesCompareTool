@@ -44,26 +44,6 @@ select:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-#tab_1{
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-#tab_1 td, #tab_1 th {
-    border: 1px solid #323333;;
-    padding: 8px;
-}
-
-
-#tab_2{
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-#tab_2 td, #tab_2 th {
-    border: 1px solid #323333;
-    padding: 8px;
-}
 
 
 body{ height:100vh; margin:0; }
@@ -156,3 +136,43 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+/*Handle hover*/
+
+.cl_user_handle:hover{
+  cursor: pointer;
+}
+
+
+/*Table coloring*/
+.table_des{
+  border: 2px solid rgb(78, 85, 94);
+  border-radius: 15px;
+  color: rgb(154, 167, 184);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.table_des th{
+  padding-top: 8px;
+  padding-bottom: 8px;
+  min-width: 140px;
+}
+
+.table_des tr,td{
+  padding-top: 8px;
+  padding-bottom: 8px;
+  width: 100%;
+}
+
+.table_des tr:nth-child(even) 
+{
+  background-color: #202631;
+}
+
+.table_des tr:nth-child(odd) 
+{
+  background-color: #191c22;
+}
+
