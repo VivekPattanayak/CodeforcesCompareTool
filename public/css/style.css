@@ -176,3 +176,62 @@ input:checked + .slider:before {
   background-color: #191c22;
 }
 
+.bar_an_1 {
+  background-color:#F9CF47;
+  color:#F9CF47;
+  display: inline-block;
+  height: 100%;
+  animation-iteration-count: 100000;
+  width: 8px;
+  position: relative;
+  animation-name: animation_1;
+  animation-duration: 6s;
+}
+.bar_an_2 {
+  background-color:#1f89ca;
+  color:#1f89ca;
+  display: inline-block;
+  height: 100%;
+  animation-iteration-count: 100000;
+  width: 8px;
+  position: relative;
+  animation-name: animation_2;
+  animation-duration: 7s;
+}
+
+.bar_an_3 {
+
+  background-color:#b41e22;
+  color:#b41e22;
+  display: inline-block;
+  height: 100%;
+  animation-iteration-count: 100000;
+  width: 8px;
+  position: relative;
+  animation-name: animation_3;
+  animation-duration: 12s;
+}
+
+@keyframes animation_1 {
+  0%   { -ms-transform: scaleY(0.8);transform: scaleY(0.8);}
+  25%  { -ms-transform: scaleY(1.0);transform: scaleY(1.0);}
+  50%  {-ms-transform: scaleY(0.6);transform: scaleY(0.6);}
+  75%  { -ms-transform: scaleY(0.2);transform: scaleY(0.2);}
+  100% { -ms-transform: scaleY(0.9);transform: scaleY(0.9);}
+}
+
+@keyframes animation_2 {
+  0%   { -ms-transform: scaleY(0.2); transform: scaleY(0.2);}
+  25%  { -ms-transform: scaleY(0.6); transform: scaleY(0.6);}
+  50%  {-ms-transform: scaleY(0.1);  transform: scaleY(0.1);}
+  75%  {-ms-transform: scaleY(1.0);  transform: scaleY(1.0);}
+  100% {-ms-transform: scaleY(0.5);  transform: scaleY(0.5);}
+}
+
+@keyframes animation_3 {
+  0%   { -ms-transform: scaleY(0.1); transform: scaleY(0.1);}
+  25%  { -ms-transform: scaleY(1.0); transform: scaleY(1.0);}
+  50%  {-ms-transform: scaleY(0.5); transform: scaleY(0.5);}
+  75%  { -ms-transform: scaleY(0.8); transform: scaleY(0.8);}
+  100% {-ms-transform: scaleY(1.0); transform: scaleY(1.0);}
+}
