@@ -99,12 +99,12 @@ async function comparefunction(){
                    if(qs.verdict==="OK"){
                         if(MP1.get(qs.contestId+qs.problem.index)===undefined){
                             MP1.set(qs.contestId+qs.problem.index,1);
+                            if(MR1.get(qs.problem.rating)!=undefined){
+                                MR1.set(qs.problem.rating,MR1.get(qs.problem.rating)+1);
+                            }
                         }
                         else{
                             MP1.set(qs.contestId+qs.problem.index,MP1.get(qs.contestId+qs.problem.index)+1);
-                        }
-                        if(MR1.get(qs.problem.rating)!=undefined){
-                            MR1.set(qs.problem.rating,MR1.get(qs.problem.rating)+1);
                         }
                    } 
                    for(let i1=0;i1<xdata_psolve_common.length;i1++){
@@ -159,7 +159,7 @@ async function comparefunction(){
             document.getElementById("maxdminus1").innerHTML=maxdminus+ ' ( '+worstroundname+' ) ';
             //console.log(Xval);
             //console.log(Yval);
-            let str ='var Xval=[',maxrate=100,minrate=800;
+            let str ='var Xval=[',minrate=100000,min_rt_graph=800;
             for(var i=0;i<Xval.length;i++){
                     str=str+Xval[i]+',';
             }
@@ -167,23 +167,21 @@ async function comparefunction(){
             str= str+ ' var Yval=[';
                 for(var i=0;i<Yval.length;i++){
                     str=str+Yval[i]+',';
-                    if(Yval[i]>maxrate){
-                        maxrate=Yval[i];
-                    }
                     if(Yval[i]<minrate){
                         minrate=Yval[i];
                     }
             }
-            maxrate=maxrate+100;
-            minrate=minrate-100;
-            if(minrate<0){
-                minrate=0;
+            if(minrate<min_rt_graph){
+                min_rt_graph=400;
             }
-            if(minrate>=maxrate){
-                minrate=minrate-100;
-                if(minrate<0){
-                    minrate=0;
-                }
+            if(minrate<min_rt_graph){
+                min_rt_graph=0;
+            }
+            if(minrate<min_rt_graph){
+                min_rt_graph=minrate-100;
+                min_rt_graph=(99-min_rt_graph)/100;
+                min_rt_graph=~~min_rt_graph;
+                min_rt_graph=-100*min_rt_graph;
             }
             str=str+'];';
             document.getElementById("g1holder").innerHTML=`<div style="color:#33ccff;font-weight:bold"> `+ user1.handle+"'s chart </div>" +' <canvas id="graph1" style="width:100%;max-width:800px;display:block;margin:auto;"></canvas> ';
@@ -220,7 +218,7 @@ async function comparefunction(){
                     display: true,
                     labelString: 'Rating',
                     fontColor:'#9AA7B8',
-                  } , gridLines: { color: '#434c56' } , ticks: {fontColor: '#9AA7B8',min:`+minrate+', max:'+maxrate+'}}],'
+                  } , gridLines: { color: '#434c56' } , ticks: {fontColor: '#9AA7B8',min:${min_rt_graph}`+',}}],'
                 +'}'
             +'}'
             +'});;';
@@ -335,9 +333,9 @@ async function comparefunction(){
                         }
                         else{
                             MP1.set(qs.contestId+qs.problem.index,1);
-                        }
-                        if(MR2.get(qs.problem.rating)!=undefined){
-                            MR2.set(qs.problem.rating,MR2.get(qs.problem.rating)+1);
+                            if(MR2.get(qs.problem.rating)!=undefined){
+                                MR2.set(qs.problem.rating,MR2.get(qs.problem.rating)+1);
+                            }
                         }
                    } 
             }
@@ -394,7 +392,7 @@ async function comparefunction(){
             document.getElementById("maxdminus2").innerHTML=maxdminus+ ' ( '+worstroundname+' ) ';
             //console.log(Xval);
             //console.log(Yval);
-            let str ='var Xval=[',maxrate=100,minrate=800;
+            let str ='var Xval=[',minrate=100000,min_rt_graph=800;
             for(var i=0;i<Xval.length;i++){
                     str=str+Xval[i]+',';
             }
@@ -402,23 +400,21 @@ async function comparefunction(){
             str= str+ ' var Yval=[';
                 for(var i=0;i<Yval.length;i++){
                     str=str+Yval[i]+',';
-                    if(Yval[i]>maxrate){
-                        maxrate=Yval[i];
-                    }
                     if(Yval[i]<minrate){
                         minrate=Yval[i];
                     }
             }
-            maxrate=maxrate+100;
-            minrate=minrate-100;
-            if(minrate<0){
-                minrate=0;
+            if(minrate<min_rt_graph){
+                min_rt_graph=400;
             }
-            if(minrate>=maxrate){
-                minrate=minrate-100;
-                if(minrate<0){
-                    minrate=0;
-                }
+            if(minrate<min_rt_graph){
+                min_rt_graph=0;
+            }
+            if(minrate<min_rt_graph){
+                min_rt_graph=minrate-100;
+                min_rt_graph=(99-min_rt_graph)/100;
+                min_rt_graph=~~min_rt_graph;
+                min_rt_graph=-100*min_rt_graph;
             }
             str=str+'];';
             document.getElementById("g2holder").innerHTML=`<div style="color:#33ccff;font-weight:bold"> `+ user2.handle+"'s chart </div>" +' <canvas id="graph2" style="width:100%;max-width:800px;display:block;margin:auto;"></canvas> ';
@@ -455,7 +451,7 @@ async function comparefunction(){
                     display: true,
                     labelString: 'Rating',
                     fontColor: '#9AA7B8'
-                  } , gridLines: { color: '#434c56' }, ticks: {fontColor: '#9AA7B8',min:`+minrate+', max:'+maxrate+'}}],'
+                  } , gridLines: { color: '#434c56' }, ticks: {fontColor: '#9AA7B8',min:${min_rt_graph}`+'}}],'
                 +'}'
             +'}'
             +'});;';
@@ -644,7 +640,6 @@ function colorcheck(str){
     }
     return '#e0ddd1';
 }
-
 
 function load_cf_page(div_id)
 {
