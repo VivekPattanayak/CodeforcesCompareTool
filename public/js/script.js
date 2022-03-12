@@ -1,13 +1,3 @@
-var indx=0;
-
-var timer = setInterval( rgbloader, 1200);
-
-function rgbloader(){
-    var col_arr = ['#9AA7B8'];
-    document.getElementById('load_circle_rgb').style.borderTop='5px solid '+col_arr[indx];
-    indx=(indx+1)%2;
-}
-
 async function comparefunction(){
 
     let MR1= new Map();

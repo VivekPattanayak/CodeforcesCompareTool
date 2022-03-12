@@ -1,12 +1,32 @@
-.loader {
-    border: 5px solid #3a3a3a; /* Light grey */
+.threedot {
+    position: absolute;
+ }
+ .dot {
+    width: 13px;
+    height: 12.99px;
+    background: rgb(255, 255, 255,0.45);
+    display: inline-block;
     border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    animation: spin 1s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
+    position: relative;
+    animation: jump 1.1s infinite;
+ }
+ .threedot:hover > .dot {
+    animation: none;
+ }
+ .threedot .dot-1 {
+    -webkit-animation-delay: 100ms;
+    animation-delay: 100ms;
+ }
+ .threedot .dot-2 {
+    -webkit-animation-delay: 200ms;
+    animation-delay: 200ms;
+ }
+ .threedot .dot-3 {
+    -webkit-animation-delay: 300ms;
+    animation-delay: 300ms;
+ }
+ @keyframes jump {
+    0%   {bottom: 0px;}
+    20%  {bottom: 8px;}
+    40%  {bottom: 0px;}
+ }
