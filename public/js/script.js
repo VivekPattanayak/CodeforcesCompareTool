@@ -27,9 +27,12 @@ async function comparefunction(){
     document.getElementById("loadcircle").style.display="block";
     document.getElementById("user_info_total").style.display="none";
 
-    let url1="https://codeforces.com/api/user.info?handles=" + document.getElementById('info1').value;
+    let handle1 = document.getElementById('info1').value;
+    let handle2 = document.getElementById('info2').value;
+
+    let url1=`https://codeforces.com/api/user.info?handles=${handle1}`;
     const res1= await fetch(url1);
-    let url2="https://codeforces.com/api/user.info?handles=" + document.getElementById('info2').value;
+    let url2=`https://codeforces.com/api/user.info?handles=${handle2}`;
     const res2= await fetch(url2);
     let a1,a2,user1,user2,ratingurl1,rating_exists1,ratingurl2,rating_exists2;
     let lendata=[],ydata1=[],ydata2=[];
@@ -654,3 +657,4 @@ function load_cf_page(div_id)
         window.open(cf_link, '_blank').focus();
     }
 }
+

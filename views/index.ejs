@@ -19,9 +19,10 @@
         <!--for using chart.js extension to plot ratings-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
         <script src="/js/script.js"></script>
+        <script src="/js/onload.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   </head>
-    <body>
+    <body onload="populate_both_tables()">
       
       <!-- --------------------------------------------------------------------NAV---------------------------------------------------------------------------------------->
 
@@ -99,107 +100,14 @@
         <!-- --------------------------------------------------------------------USERS---------------------------------------------------------------------------------------->
         
         <div class=".container-fluid " id="user_info_total" style=" text-align: center;">
-            <div class="row"  style="margin:0">
+            <div class="row" id = "u_info_row" style="margin:0">
                 
                 <!-- --------------------------------------------------------------------USER1---------------------------------------------------------------------------------------->
                 
-                <div id="user_1" class="col-sm" style="background-color:#191c22;">
-                  <img id="user1dp" style="border-radius: 50%;margin-top:10px">
-                  <div>
-                    <button type="button" class="btn btn-secondary" data-toggle="tooltip" style="margin-top:10px;background-color: transparent;border: 0px solid transparent" data-placement="bottom" title="Visit cf profile">
-                      <div id="handle1" class="cl_user_handle" onclick="load_cf_page('handle1')" style="font-family:verdana;font-weight: bold;font-size:18px;"> </div>
-                    </button>
-                  </div>
-                  <table id="tab_1" class="table_des" style="width:80%;max-width:500px;margin-left: auto; margin-right: auto;display:none;">
-                    <tr>
-                      <th style="font-weight:bold">Name</th>
-                      <td><div id="name1" style="margin-top:10px"> </div></td>
-                    </tr>
-                    <tr>
-                      <th style="font-weight:bold">Rating</th>
-                      <td><div id="rating1"> </div></td>
-                    </tr>
-                    <tr>
-                      <th style="font-weight:bold">Max Rating</th>
-                      <td><div id="maxrating1" style="margin-bottom:10px"> </div></td>
-                    </tr>
-                    <tr>
-                      <th style="font-weight:bold">Contests Appeared</th>
-                      <td><div id="contests_appeared1"> </div> </td>
-                    </tr>
-                    <tr>
-                      <th style="font-weight:bold">AC Count</th>
-                      <td><div id="problems_solved1"></div> </td>
-                    </tr>
-                    <tr>
-                      <th style="font-weight:bold">Best Rank</th>
-                      <td><div id="bestrank1"></div> </td>
-                    </tr>
-                    <tr>
-                      <th style="font-weight:bold">Worst Rank</th>
-                      <td><div id="worstrank1"></div></td>
-                    </tr>
-                    <tr>
-                      <th style="font-weight:bold">Max Rating Increase</th>
-                      <td><div id="maxdplus1" > </div></td>
-                    </tr>
-                    <tr>
-                      <th style="font-weight:bold">Max Rating Decrease</th>
-                      <td><div id="maxdminus1" style="margin-bottom:10px"> </div></td>
-                    </tr> 
-                  </table>
-                </div>
+                
                 
                 <!-- --------------------------------------------------------------------USER2---------------------------------------------------------------------------------------->
-            
-                <div id="user_2" class="col-sm" style="background-color:#222630;display:block;">
-                  <img id="user2dp" style="border-radius: 50%;margin-top:10px">
-                  <div>
-                    <button type="button" class="btn btn-secondary" data-toggle="tooltip" style="margin-top:10px;background-color: transparent;border: 0px solid transparent" data-placement="bottom" title="Visit cf profile">
-                      <div id="handle2" class="cl_user_handle" onclick="load_cf_page('handle2')" style="background-color:inherit;font-size:18px;font-family:verdana;font-weight: bold;"> </div>
-                    </button>
-                  </div>
-                  <table id="tab_2" class="table_des" style="background-color:inherit;width:80%;max-width:500px;margin-left: auto; margin-right: auto;display:none;">
-                    <tbody style="background-color: inherit;">
-                    <tr>
-                      <th style="font-weight:bold;margin-top:10px;">Name</th>
-                      <td><div id="name2" style="margin-top:10px;"> </div></td>
-                    </tr>
-                    <tr >
-                      <th style="background-color: inherit;font-weight:bold">Rating</th>
-                      <td><div id="rating2" > </div></td>
-                    </tr>
-                    <tr>
-                      <th style="font-weight:bold;background-color: inherit;">Max Rating</th>
-                      <td><div id="maxrating2"  style="margin-bottom:10px"> </div></td>
-                    </tr>
-                    <tr>
-                      <th style="font-weight:bold">Contests Appeared</th>
-                      <td><div id="contests_appeared2" > </div> </td>
-                    </tr>
-                    <tr>
-                      <th style="font-weight:bold">AC Count</th>
-                      <td><div id="problems_solved2" ></div> </td>
-                    </tr>
-                    <tr >
-                      <th style="font-weight:bold">Best Rank</th>
-                      <td><div id="bestrank2" ></div> </td>
-                    </tr>
-                    <tr >
-                      <th style="font-weight:bold">Worst Rank</th>
-                      <td><div id="worstrank2" ></div></td>
-                    </tr>
-                    <tr >
-                      <th style="font-weight:bold">Max Rating Increase</th>
-                      <td><div id="maxdplus2" > </div></td>
-                    </tr>
-                    <tr >
-                      <th style="font-weight:bold">Max Rating Decrease</th>
-                      <td><div id="maxdminus2"  style="margin-bottom:10px"> </div></td>
-                    </tr> 
-                    </tbody>
-                  </table>
-                </div>
+          
                 
 
               </div>

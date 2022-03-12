@@ -22,4 +22,7 @@ app.get("/", function (req, res) {
     res.render("index");
 });
 
-app.listen(port, () => console.info(`Ok -> Port: ${port}`))
+var d = new Date();
+const ctime = d.toLocaleTimeString(); 
+
+app.listen(port, () => console.info(`Running at port ${port} at ${ctime}`))
