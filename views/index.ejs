@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="/css/style.css">
         <link rel="stylesheet" href="/css/loader.css">
+        <link rel="stylesheet" href="/css/topbtn.css">
         <!--for using chart.js extension to plot ratings-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
         <script src="/js/script.js"></script>
@@ -22,6 +23,8 @@
     <body onload="populate_both_tables()">
       
       <%- include('partials/navbar') %>
+
+      <button onclick="goto_top()" id="top_scroll_btn" ><i class="fa fa-arrow-circle-up"></i></button>
 
         <div class=".container-fluid " style=" text-align: center;background-color: #13161d;">
             <div class="row " style="color:#F9CF47;margin:0" >

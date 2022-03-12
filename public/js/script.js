@@ -648,3 +648,21 @@ function load_cf_page(div_id)
     }
 }
 
+function goto_top() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+
+document.addEventListener("DOMContentLoaded", function(event) {
+    var top_scroll_btn = document.getElementById("top_scroll_btn");
+
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+    if (document.body.scrollTop >= 50 || document.documentElement.scrollTop >= 50) {
+        top_scroll_btn.style.display = "block";
+    } else {
+        top_scroll_btn.style.display = "none";
+    }
+    }
+ });
