@@ -666,3 +666,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
     }
  });
+
+ const logout_user = () => {
+     process.env.USERID='<logged out>'
+     console.log('ap')
+ }
+
+ const reg_message_setup = () => {
+     process.env.REG_STATUS = ''
+ }

@@ -1,0 +1,19 @@
+<form method="POST" action="/login" onsubmit="return validate_data()" id="form1" style="margin-left:auto;margin-right:auto;margin-top:20px">
+    <div class="form-control">
+        <label for="user_id">Enter user ID</label>
+        <input name="userid" id="user_id" style="background-color:white;color:black" />
+        <small>User id cannot be blank</small>
+        <i class="fa fa-exclamation" aria-hidden="true"></i>
+        <i class="fa fa-check" aria-hidden="true"></i>
+    </div>
+    <div class="form-control">
+        <label for="user_password">Enter password</label>
+        <input name="userpassword" id="user_password" type="password" style="background-color:white;color:black" />
+        <small>Password cannot be blank</small>
+        <i class="fa fa-exclamation" aria-hidden="true"></i>
+        <i class="fa fa-check" aria-hidden="true"></i>
+    </div>
+    <div style="padding-right:30%;padding-left:30%">
+        <input type="submit" value="Login" style="margin-left:auto;margin-right:auto;width:100%;"/>
+    </div>
+</form>

@@ -223,3 +223,78 @@ input:checked + .slider:before {
   75%  { -ms-transform: scaleY(0.8); transform: scaleY(0.99);}
   100% {-ms-transform: scaleY(1.0); transform: scaleY(0.1);}
 }
+
+.form-control{
+  background-color: inherit;
+  border: 0px solid transparent;
+  position: relative;
+  color:white;
+}
+
+.form-control input{
+  width: 100%;
+  outline:0;
+  border: 2px solid white;
+  margin-bottom: 20px;
+}
+
+.form-control input:focus{
+  width: 100%;
+  border: 2px solid rgb(112, 112, 209);
+}
+
+.form-control.success input{
+  background-color: inherit;
+  border: 2px solid rgb(28, 175, 28);
+  color:white;
+}
+
+.form-control.error input{
+  background-color: inherit;
+  border: 2px solid red;
+  color:white;
+}
+
+.form-control i:first-of-type{
+  color:red;
+  position: absolute;
+  top: 38px; right: 17px;
+  visibility: hidden;
+}
+
+.form-control.success i:first-of-type{
+  visibility: hidden;
+}
+
+.form-control.error i:first-of-type{
+  visibility: visible;
+}
+
+.form-control i:nth-of-type(2){
+  color:rgb(28, 175, 28);
+  position: absolute;
+  top: 38px; right: 17px;
+  visibility: hidden;
+}
+
+.form-control.success i:nth-of-type(2){
+  visibility: visible;
+}
+
+.form-control.error i:nth-of-type(2){
+  visibility: hidden;
+}
+
+.form-control small{
+  position: absolute;
+  bottom: 0; left: 11px;
+  visibility: hidden;
+}
+
+.form-control.success small{
+  visibility: hidden;
+}
+
+.form-control.error small{
+  visibility: visible;
+}
