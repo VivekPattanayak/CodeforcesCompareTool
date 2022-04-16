@@ -654,6 +654,15 @@ function goto_top() {
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
+    var uid = document.getElementById('lgst').innerHTML;
+    console.log('uid:',uid);
+    if(uid==0){
+        document.getElementById('profile').style.display='none';
+    }
+    else{
+        document.getElementById('profile').style.display='flex-block';
+    }
+
     var top_scroll_btn = document.getElementById("top_scroll_btn");
 
     window.onscroll = function() {scrollFunction()};

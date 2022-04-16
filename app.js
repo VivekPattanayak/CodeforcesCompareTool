@@ -31,7 +31,7 @@ app.get("/", function (req, res) {
 });
 
 app.get("/login", function (req, res) {
-    res.render("login",{reg_status:process.env.REG_STATUS});
+    res.render("login",{reg_status:process.env.REG_STATUS, login_status:process.env.LOGGED_IN});
     process.env.REG_STATUS=''
 });
 
@@ -45,7 +45,7 @@ app.get("/profile", function (req, res) {
 });
 
 app.get("/logout", (req,res) => {
-    process.env.USERID='logggedout'
+    process.env.USERID='default_value_hash_3110'
     process.env.LOGGED_IN=0
     res.redirect("/");
 })

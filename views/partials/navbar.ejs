@@ -24,9 +24,10 @@
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0 " style="background-color:inherit;">
             <li class="nav-item" style="background-color:inherit;margin-top: 5px;">
               <div class="col " style="padding:0;color:white;margin-right:10px;background-color:inherit;">
-                <a id="login" href="/login" >Login</a>
-                <a id="logout" href="/logout">Logout</a>
-                <a id="profile" href="/profile">Profile</a>
+                <a id="login" href="/login" class="navlink">Login</a>
+                <a id="logout" href="/logout" class="navlink">Logout</a>
+                <a id="profile" href="/profile" class="navlink"><%= process.env.USERID %></a>
+                <a id="lgst" href="profile" style="display:none"><%= login_status %></a>
               </div>
           </li>
             <li id="toggle_head" class="nav-item" style="background-color:inherit;margin-top: 5px;">
