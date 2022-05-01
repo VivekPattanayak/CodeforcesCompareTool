@@ -25,7 +25,7 @@
       <%- include('partials/navbar') %>
 
       <button onclick="goto_top()" id="top_scroll_btn" ><i class="fa fa-arrow-circle-up"></i></button>
-        <div style="width:100%;color:white;text-align: center;">
+        <div style="width:100%;color:white;text-align: center;font-size: 12px;">
           <%= login_message %>
         </div>
         <div class=".container-fluid " style=" text-align: center;background-color: #13161d;">
@@ -53,7 +53,7 @@
           <div class=".container-fluid " style=" text-align: center;">
             <div class="row " style="margin:0" >
                     <div >
-                        <button class="animate__animated animate__fadeIn animate__delay-1s" id="clickbox" type="button" onclick=comparefunction() style="padding-top:5px;padding-bottom:5px;padding-left:10px;padding-right:10px;margin-top:30px;margin-bottom:30px;background-color: #295489;color:white;font-size:16px;border-radius: 11px;border: 0px solid #000000;" >
+                        <button  id="clickbox" type="button" onclick=comparefunction() class="clickbtn" >
                             Compare
                         </button>
                     </div>

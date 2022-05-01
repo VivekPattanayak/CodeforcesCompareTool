@@ -78,43 +78,41 @@ footer{
 }
 
 /* The slider */
-.slider {
-  margin-top: auto;
-  margin-bottom: auto;
-  position: absolute;
+.lbl {
+  position: relative;
+  display: inline-block;
+  margin-top: 12px;
+  height: 15px;
+  width: 43px;
+  background: rgb(255, 255, 255, 0.3);
+  border-radius: 100px;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 25px;
-  width: 45px;
-  border: 2px solid white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  transition: all 0.3s ease;
 }
-
-.slider:before {
+.lbl:after {
   position: absolute;
-  content: "";
-  height: 17px;
-  width: 17px;
-  left: 4px;
-  bottom: 2px;
-  background-color: #F9CF47;
-  border: 2px solid #F9CF47;
-  -webkit-transition: .4s;
-  transition: .4s;
+  display: inline-block;
+  left: 0px;
+  top: -3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 100px;
+  background: rgb(255, 255, 255, 1);
+  box-shadow: 0px 3px 3px rgba(0,0,0,0.05);
+  content: '';
+  transition: all 0.3s ease;
 }
-
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(16px);
-  -ms-transform: translateX(16px);
-  transform: translateX(16px);
-  background-color: #33ccff;
-  border: 2px solid #33ccff;
+.lbl:active:after { transform: scale(1.15, 0.85); }
+.cbx:checked ~ label { background: rgba(115, 113, 134, 0.5); }
+.cbx:checked ~ label:after {
+  left: 20px;
 }
+.cbx:disabled ~ label {
+  background: #d5d5d5;
+  pointer-events: none;
+}
+.cbx:disabled ~ label:after { background: #bcbdbc; }
+.hidden { display: none; }
 
 /* Rounded sliders */
 .slider.round {
@@ -300,8 +298,7 @@ input:checked + .slider:before {
 }
 
 .navlink {
-  background-color: rgb(154, 167, 184, 0.7);
-  color: #212529;
+  color: #eaf0f6;
   padding-left: 10px; 
   padding-right: 10px;
   padding-top:1px;
@@ -313,6 +310,24 @@ input:checked + .slider:before {
 }
 
 .navlink:hover{
-  background-color: rgb(154, 167, 184, 0.3);
   color:#F9CF47;
+}
+
+.clickbtn{
+  padding-top:5px;
+  padding-bottom:5px;
+  padding-left:10px;
+  padding-right:10px;
+  margin-top:30px;
+  margin-bottom:30px;
+  background-color: rgb(255, 255, 255,0.1);
+  color:white;
+  font-size:16px;
+  border-radius: 11px;
+  border: 0px solid #000000;
+}
+
+.clickbtn:hover{
+  background-color: rgb(255, 255, 255,0.05);
+  color:#5f47f9;
 }
