@@ -331,3 +331,11 @@ footer{
   background-color: rgb(255, 255, 255,0.05);
   color:#5f47f9;
 }
+
+.prof_box{
+  background-color: rgb(95, 71, 249,0.8);
+}
+
+.prof_box:hover{
+  color: black;
+}

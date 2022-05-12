@@ -583,19 +583,17 @@ function toggleuser2(){
     let checker=document.getElementById("user_2");
     if(checker.style.display==='block'){
         checker.style.display='none';
-        document.getElementById("grp2").style.display='none';
         document.getElementById("dgholder").style.display='none';
         document.getElementById("sup_dgholder").style.display='none';
         document.getElementById("Enteruser2").style.display='none';
         document.getElementById("clickbox").innerHTML="See Stats";
         document.getElementById("sup_problemvs").style.display='none';
         document.getElementById("u1_only_prob").style.display='block';
+        document.getElementById("grp2").style.display='none';
     }
     else if(checker.style.display==='none'){
         checker.style.display='block';
-        document.getElementById("grp2").style.display='block';
         document.getElementById("dgholder").style.display='block';
-        document.getElementById("sup_dgholder").style.display='block';
         document.getElementById("Enteruser2").style.display='block';
         document.getElementById("sup_problemvs").style.display='block';
         document.getElementById("clickbox").innerHTML="Compare";
@@ -603,6 +601,8 @@ function toggleuser2(){
         document.getElementById("info2").value='';
         document.getElementById("info2").value=str_tmp;
         document.getElementById("u1_only_prob").style.display='none';
+        document.getElementById("sup_dgholder").style.display='block';
+        document.getElementById("grp2").style.display='block';
     }
 }
 

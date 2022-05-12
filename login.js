@@ -1,7 +1,7 @@
 const { append } = require('express/lib/response')
 const mongoose = require('mongoose')
 
-mongoose.connect('mongodb://localhost:27017/cftooldetails')
+mongoose.connect('mongodb+srv://cftool_admin:loremipsum@cluster0.mrsp3.mongodb.net/cftool')
 .then(()=>{
     console.log('mongo connected!')
 },(err)=>{
